@@ -78,8 +78,8 @@ const FAQS = [
 function AnnouncementBar() {
   return (
     <div className="bg-teal-dark text-white text-center py-2.5 px-4 text-xs font-medium tracking-wide z-50 relative">
-      🎉 2026 ACMHR-K Ambassador Training Program is now open —{' '}
-      <a href="#contact" className="text-gold font-bold hover:underline ml-1">Apply Here →</a>
+      🎓 ACMHR-K 2026 Ambassador Training Program Sessions: Feb 7 – 28, 2026 —{' '}
+      <a href="#contact" className="text-gold font-bold hover:underline ml-1">Applications Closed</a>
     </div>
   )
 }
