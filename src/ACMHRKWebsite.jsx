@@ -16,7 +16,7 @@ function MaintenancePage() {
 
       <div className="relative max-w-lg mx-auto">
         {/* Logo */}
-        <img src={logo} alt="ACMHR-K" className="w-24 h-24 rounded-full object-contain mx-auto mb-8 opacity-90" />
+        <img src={logo} alt="ACMHR-K" className="w-32 h-32 object-contain mx-auto mb-8 opacity-90" />
 
         {/* Badge */}
         <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-teal-light text-[0.72rem] font-bold tracking-widest uppercase px-5 py-1.5 rounded-full mb-7">
