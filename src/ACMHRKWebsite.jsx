@@ -1,0 +1,810 @@
+import { useState, useEffect, useRef } from 'react'
+import logo from './assets/logo.png'
+
+/* ─────────────────────────────────────────
+   DATA  (from ACMHR-K Content Plan doc)
+───────────────────────────────────────── */
+const NAV_LINKS = [
+  { label: 'Home',        id: 'home' },
+  { label: 'About',       id: 'about' },
+  { label: 'Team',        id: 'team' },
+  { label: 'Research',    id: 'research' },
+  { label: 'Governance',  id: 'governance' },
+  { label: 'Partnership', id: 'partnership' },
+  { label: 'Gallery',     id: 'gallery' },
+  { label: 'FAQs',        id: 'faqs' },
+  { label: 'Contact',     id: 'contact' },
+]
+
+const STATS = [
+  { num: '5',   label: 'Board Members' },
+  { num: '7',   label: 'Strategic Objectives' },
+  { num: '10+', label: 'Regional Partners' },
+  { num: '2025',label: 'Year Founded' },
+]
+
+const TEAM = [
+  { name: 'Dr. Simon Okomo Aloo',  role: 'Chairperson',   detail: 'PhD Candidate, Monash University',              emoji: '👨‍🔬' },
+  // { name: 'Dr. Sheila Kilonzi',    role: 'Secretary',      detail: 'Lecturer & HOD, Karatina University',           emoji: '👩‍🏫' },
+  { name: 'Stephen Nyaranga',      role: 'IT Lead',      detail: 'Asst. Lecturer & Head of IT, Vatel Rwanda',     emoji: 'Stephen' },
+  { name: 'Silas Ambundo',         role: 'Treasurer',   detail: 'Teacher, Gititu Secondary School',              emoji: '👨‍💻' },
+  { name: 'Monica Nduta',          role: 'Secretary',   detail: 'Nutritionist, Kitui County',                    emoji: '👩‍🏫' },
+]
+
+const PROGRAMS = [
+  { icon: '🔬', title: 'Interdisciplinary Research',         desc: 'Support and conduct studies that inform national health policy and clinical practices across Kenya.' },
+  { icon: '📢', title: 'Public Awareness & Health Literacy', desc: 'Empower communities with knowledge on healthy lifestyles, nutrition, and early screening for cardio-metabolic conditions.' },
+  { icon: '⚖️', title: 'Advocacy',                          desc: 'Promote accessible and affordable healthcare services for cardio-metabolic patients nationwide.' },
+  { icon: '🎓', title: 'Capacity Building',                  desc: 'Organize workshops, conferences, and professional trainings on cardio-metabolic health for practitioners and researchers.' },
+  { icon: '🤝', title: 'Networking & Partnerships',          desc: 'Collaborate with government, academia, and civil society to scale health solutions across Kenya and East Africa.' },
+  { icon: '🏘️', title: 'Community Programs',                 desc: 'Implement local projects focused on lifestyle modification, screening, and treatment support at the grassroots level.' },
+  { icon: '🌍', title: 'International Collaboration',        desc: 'Build ties with global organizations working on cardio-metabolic health to bring best practices to Kenya.' },
+]
+
+const VALUES = [
+  { icon: '🎯', title: 'Integrity & Accountability' },
+  { icon: '🤝', title: 'Collaboration & Partnership' },
+  { icon: '💡', title: 'Innovation & Scientific Excellence' },
+  { icon: '⚖️', title: 'Equity & Inclusion' },
+  { icon: '🌱', title: 'Community Empowerment' },
+]
+
+const MEMBERSHIP_TYPES = [
+  { type: 'Ordinary Members',  desc: 'Individuals committed to ACMHR-K\'s mission and values.' },
+  { type: 'Corporate Members', desc: 'Institutions or organizations supporting ACMHR-K programs and research.' },
+  { type: 'Honorary Members',  desc: 'Distinguished individuals recognized for contributions to health and research.' },
+]
+
+const PARTNERS = [
+  'Karatina University', 'County Departments of Health',
+  'Monash University Research Partners', 'Local & International NGOs',
+]
+
+const FAQS = [
+  { q: "What is ACMHR-K's main goal?",         a: "To promote prevention, early detection, and management of cardio-metabolic diseases in Kenya through research, education, and advocacy." },
+  { q: "Who can become a member?",              a: "Any individual or organization aligned with ACMHR-K's mission of advancing cardio-metabolic health." },
+  { q: "How do I apply for membership?",        a: "Submit an application to the Secretariat with a proposer and seconder from existing members (Clause 6.4 of the Constitution)." },
+  { q: "Are there membership fees?",            a: "Details of fees, if applicable, are set by the Board and communicated to members annually." },
+  { q: "Can students or volunteers join?",      a: "Yes. ACMHR-K actively encourages student and volunteer engagement in research and community programs." },
+  { q: "What types of partnerships do you accept?", a: "Academic, clinical, NGO, corporate, and government collaborations that advance cardio-metabolic health." },
+  { q: "How often are general meetings held?",  a: "Once per year (Annual General Meeting) and as needed for special meetings as per the Constitution." },
+  { q: "How can I support ACMHR-K?",            a: "Join as a member, partner in a project, volunteer for outreach, or donate to support research and community programs." },
+]
+
+/* ─────────────────────────────────────────
+   SUBCOMPONENTS
+───────────────────────────────────────── */
+
+function AnnouncementBar() {
+  return (
+    <div className="bg-teal-dark text-white text-center py-2.5 px-4 text-xs font-medium tracking-wide z-50 relative">
+      🎉 2026 ACMHR-K Ambassador Training Program is now open —{' '}
+      <a href="#contact" className="text-gold font-bold hover:underline ml-1">Apply Here →</a>
+    </div>
+  )
+}
+
+function Navbar({ active, setActive }) {
+  const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const scrollTo = (id) => {
+    setOpen(false)
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    setActive(id)
+  }
+
+  return (
+    <nav className={`sticky top-0 z-40 bg-white/97 backdrop-blur-md border-b border-black/[0.07] transition-shadow duration-200 ${scrolled ? 'shadow-md' : ''}`}>
+      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-[70px]">
+        {/* Logo */}
+        <button onClick={() => scrollTo('home')} className="flex items-center gap-3 group">
+          <img src={logo} alt="ACMHR-K Logo" className="w-11 h-11 rounded-full object-contain" />
+          <div className="text-left leading-tight">
+            <div className="font-serif text-lg text-teal-dark leading-none">ACMHR-K</div>
+            <div className="text-[0.62rem] text-gray-400 tracking-wide">Alliance for CMH & Research · Kenya</div>
+          </div>
+        </button>
+
+        {/* Desktop nav */}
+        <ul className="hidden lg:flex items-center gap-1">
+          {NAV_LINKS.map(({ label, id }) => (
+            <li key={id}>
+              <button
+                onClick={() => scrollTo(id)}
+                className={`px-3 py-1.5 rounded-md text-[0.82rem] font-medium transition-all duration-150 ${
+                  active === id ? 'text-teal bg-teal/10' : 'text-gray-700 hover:text-teal hover:bg-teal/7'
+                }`}
+              >
+                {label}
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        <div className="hidden lg:flex items-center gap-3">
+          <button
+            onClick={() => scrollTo('contact')}
+            className="bg-teal text-white px-5 py-2 rounded-lg text-[0.82rem] font-semibold transition-all duration-150 hover:bg-teal-dark hover:-translate-y-0.5"
+          >
+            Join Us
+          </button>
+        </div>
+
+        {/* Hamburger */}
+        <button
+          className="lg:hidden flex flex-col gap-1.5 p-1"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle menu"
+        >
+          <span className={`block w-6 h-0.5 bg-navy transition-all ${open ? 'rotate-45 translate-y-2' : ''}`}/>
+          <span className={`block w-6 h-0.5 bg-navy transition-all ${open ? 'opacity-0' : ''}`}/>
+          <span className={`block w-6 h-0.5 bg-navy transition-all ${open ? '-rotate-45 -translate-y-2' : ''}`}/>
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="lg:hidden bg-white border-t border-black/[0.07] px-6 py-4 flex flex-col gap-1 shadow-lg">
+          {NAV_LINKS.map(({ label, id }) => (
+            <button
+              key={id}
+              onClick={() => scrollTo(id)}
+              className="text-left px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:text-teal hover:bg-teal/7 transition-colors"
+            >
+              {label}
+            </button>
+          ))}
+          <button
+            onClick={() => scrollTo('contact')}
+            className="mt-2 bg-teal text-white px-4 py-2.5 rounded-lg text-sm font-semibold"
+          >
+            Join Us
+          </button>
+        </div>
+      )}
+    </nav>
+  )
+}
+
+/* ── HERO ── */
+function Hero({ setActive }) {
+  const scrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    setActive(id)
+  }
+  return (
+    <section
+      id="home"
+      className="min-h-[88vh] flex items-center justify-center text-center px-6 py-20 relative overflow-hidden"
+      style={{
+        background: 'linear-gradient(135deg, rgba(0,18,25,0.90) 0%, rgba(0,95,115,0.70) 55%, rgba(10,147,150,0.50) 100%), url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1800&q=80") center/cover no-repeat'
+      }}
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_70%,rgba(10,147,150,0.12)_0%,transparent_60%)] pointer-events-none"/>
+      <div className="relative max-w-3xl mx-auto">
+        <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-teal-light text-[0.75rem] font-bold tracking-widest uppercase px-5 py-1.5 rounded-full mb-7">
+          🇰🇪 Registered Non-Profit · Kenya · Est. 2025
+        </span>
+        <h1 className="font-serif text-4xl md:text-6xl text-white leading-[1.12] mb-6 font-normal">
+          Alliance for <em className="not-italic text-teal-light">Cardio-Metabolic</em><br />
+          Health and Research<br />
+          <span className="text-3xl md:text-4xl">Kenya (ACMHR-K)</span>
+        </h1>
+        <p className="text-white/80 text-base md:text-lg max-w-xl mx-auto mb-3 font-light leading-relaxed">
+          Championing prevention, research, and advocacy for cardio-metabolic health across Kenya.
+        </p>
+        <p className="text-white/60 text-sm max-w-lg mx-auto mb-10 font-light">
+          Promoting prevention and early detection of cardio-metabolic diseases including diabetes, hypertension, obesity, and cardiovascular conditions.
+        </p>
+        <div className="flex flex-wrap gap-4 justify-center">
+          <button onClick={() => scrollTo('contact')} className="btn-primary text-sm px-8 py-3.5">Join Our Network</button>
+          <button onClick={() => scrollTo('research')} className="btn-outline-white text-sm px-8 py-3.5">Explore Research →</button>
+          <button onClick={() => scrollTo('contact')} className="bg-gold/90 hover:bg-gold text-navy font-bold px-8 py-3.5 rounded-lg text-sm transition-all duration-200 hover:-translate-y-0.5">Partner With Us</button>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ── STATS ── */
+function StatsBar() {
+  return (
+    <div className="bg-navy py-9 px-6 flex flex-wrap justify-center gap-0">
+      {STATS.map(({ num, label }, i) => (
+        <div
+          key={label}
+          className={`text-center px-10 md:px-14 py-2 ${i < STATS.length - 1 ? 'border-r border-white/10' : ''}`}
+        >
+          <div className="font-serif text-[2.2rem] text-teal-light leading-none mb-1.5">{num}</div>
+          <div className="text-[0.72rem] text-white/45 uppercase tracking-widest">{label}</div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+/* ── ABOUT ── */
+function About() {
+  return (
+    <section id="about" className="py-24 px-6 bg-[#f4f9f9]">
+      <div className="max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          {/* Image + badge */}
+          <div className="relative">
+            <div className="w-full h-[400px] rounded-2xl bg-gradient-to-br from-teal to-teal-dark flex items-center justify-center overflow-hidden">
+              <img src={logo} alt="ACMHR-K" className="w-52 h-52 object-contain opacity-30" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-8">
+                <div className="font-serif text-2xl mb-3 font-normal">Est. 2nd September 2025</div>
+                <div className="text-white/75 text-sm leading-relaxed">
+                  Registered under the Non-Governmental Organizations Coordination Act of 1990
+                </div>
+              </div>
+            </div>
+            <div className="absolute -bottom-5 -right-5 bg-gold rounded-2xl px-6 py-4 shadow-xl text-center">
+              <div className="font-serif text-2xl text-navy leading-none">NGO</div>
+              <div className="text-[0.65rem] text-navy/70 font-bold uppercase tracking-wider mt-1">Registered & Accredited</div>
+            </div>
+          </div>
+
+          {/* Text */}
+          <div>
+            <span className="section-tag">Who We Are</span>
+            <h2 className="section-title">A National Platform<br/>for Health Action</h2>
+
+            <div className="bg-teal/8 border-l-4 border-teal rounded-r-xl px-5 py-4 mb-5">
+              <p className="font-serif text-lg text-teal-dark italic font-normal leading-snug">
+                "A Kenya free from preventable cardio-metabolic diseases."
+              </p>
+              <p className="text-xs text-gray-400 mt-1 font-semibold uppercase tracking-wide">Our Vision</p>
+            </div>
+
+            <p className="text-gray-500 text-sm mb-4 leading-relaxed">
+              ACMHR-K is a national non-governmental organization dedicated to promoting research, awareness,
+              and advocacy for cardio-metabolic health in Kenya. We bring together clinicians, researchers,
+              community leaders, and policymakers to advance prevention, education, and access to affordable
+              healthcare services.
+            </p>
+
+            <p className="text-gray-500 text-sm mb-6 leading-relaxed">
+              <strong className="text-navy font-semibold">Our Mission:</strong> To promote prevention, research,
+              and accessible healthcare for cardio-metabolic wellness in Kenya and beyond.
+            </p>
+
+            <div className="space-y-3">
+              {VALUES.map(({ icon, title }) => (
+                <div key={title} className="flex items-center gap-3">
+                  <div className="w-9 h-9 bg-teal-light/30 rounded-xl flex items-center justify-center text-base flex-shrink-0">{icon}</div>
+                  <span className="text-sm font-semibold text-navy">{title}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ── TEAM ── */
+function Team() {
+  return (
+    <section id="team" className="py-24 px-6 bg-navy">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-14">
+          <span className="inline-block text-teal-light text-xs font-bold tracking-widest uppercase mb-3">The People Behind the Work</span>
+          <h2 className="font-serif text-3xl md:text-4xl text-white font-normal mb-3">Board of Directors</h2>
+          <p className="text-white/50 text-sm max-w-lg mx-auto">
+            A multidisciplinary board providing strategic leadership and oversight in alignment with ACMHR-K's constitution (Clause 11.1).
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+          {TEAM.map(({ name, role, detail, emoji }) => (
+            <div key={name} className="text-center group">
+              <div className="w-full aspect-square rounded-full bg-gradient-to-br from-teal-dark to-teal mx-auto mb-4 flex items-center justify-center text-4xl border-3 border-teal-light/20 group-hover:border-teal-light/50 transition-all duration-300">
+                {emoji}
+              </div>
+              <h4 className="font-serif text-white text-sm font-normal mb-1 leading-tight">{name}</h4>
+              <div className="text-teal-light text-[0.68rem] font-bold uppercase tracking-wider mb-1">{role}</div>
+              <div className="text-white/40 text-[0.7rem] leading-tight">{detail}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-14 bg-white/5 border border-white/10 rounded-2xl p-7 text-center max-w-2xl mx-auto">
+          <h4 className="font-serif text-white text-lg font-normal mb-3">Secretariat & Management</h4>
+          <p className="text-white/55 text-sm leading-relaxed">
+            The Secretariat, led by a Chief Executive Officer, oversees daily operations, program implementation,
+            and communication — acting as the link between the Board, members, and partners.
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ── RESEARCH ── */
+function Research() {
+  return (
+    <section id="research" className="py-24 px-6">
+      <div className="max-w-5xl mx-auto">
+        <span className="section-tag">What We Do</span>
+        <h2 className="section-title">Research & Programs</h2>
+        <p className="text-gray-400 text-sm max-w-xl mb-12 leading-relaxed">
+          Our work is guided by 7 strategic objectives aligned with our constitution, spanning prevention,
+          research, digital health, and community engagement.
+        </p>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {PROGRAMS.map(({ icon, title, desc }, i) => (
+            <div key={title} className="card group">
+              {/* top accent bar on hover */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal to-teal-light scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-t-2xl"/>
+              <div className="w-12 h-12 bg-[#f4f9f9] rounded-xl flex items-center justify-center text-2xl mb-5">{icon}</div>
+              <div className="text-[0.65rem] text-teal font-bold uppercase tracking-widest mb-1">Objective {i + 1}</div>
+              <h3 className="font-serif text-lg text-navy font-normal mb-3">{title}</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 bg-[#f4f9f9] rounded-2xl p-8 border border-black/[0.05]">
+          <h4 className="font-serif text-xl text-navy font-normal mb-3">Main Objective</h4>
+          <p className="text-gray-500 text-sm leading-relaxed max-w-2xl">
+            To promote prevention and early detection of cardio-metabolic diseases — including <strong>diabetes,
+            hypertension, obesity, and cardiovascular conditions</strong> — through interdisciplinary research,
+            community engagement, and policy advocacy.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            {['Future: Research Publications Repository', 'Future: Research Fellowship Program'].map(f => (
+              <span key={f} className="bg-teal/10 text-teal text-xs font-semibold px-4 py-1.5 rounded-full">{f}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ── GOVERNANCE ── */
+function Governance() {
+  return (
+    <section id="governance" className="py-24 px-6 bg-[#f4f9f9]">
+      <div className="max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-14 items-start">
+          {/* Governance Structure */}
+          <div>
+            <span className="section-tag">Structure</span>
+            <h2 className="section-title">Governance & Membership</h2>
+            <p className="text-gray-400 text-sm mb-8 leading-relaxed">
+              ACMHR-K operates with transparency, structure, and inclusiveness as guided by our constitution.
+            </p>
+
+            <div className="space-y-4">
+              {[
+                { title: 'Board of Directors', desc: 'Provides strategic leadership and oversight (5–9 members). Sets policy direction and ensures accountability.' },
+                { title: 'The Secretariat', desc: 'Headed by the CEO, handles day-to-day management, program implementation, and external communications.' },
+                { title: 'General Assembly', desc: 'The supreme decision-making body comprising all members. Meets annually for the AGM.' },
+              ].map(({ title, desc }, i) => (
+                <div key={title} className="flex gap-4 items-start bg-white rounded-xl p-5 border border-black/[0.05] shadow-sm">
+                  <div className="w-9 h-9 bg-teal rounded-xl text-white flex items-center justify-center font-bold text-sm flex-shrink-0">{i + 1}</div>
+                  <div>
+                    <h4 className="text-sm font-bold text-navy mb-1">{title}</h4>
+                    <p className="text-xs text-gray-400 leading-relaxed">{desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Membership */}
+          <div>
+            <span className="section-tag">Join ACMHR-K</span>
+            <h3 className="font-serif text-2xl text-navy font-normal mb-6">Membership Categories</h3>
+
+            <div className="space-y-4 mb-8">
+              {MEMBERSHIP_TYPES.map(({ type, desc }) => (
+                <div key={type} className="bg-white rounded-xl p-5 border border-black/[0.05] shadow-sm">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-2 h-2 rounded-full bg-teal"/>
+                    <h4 className="text-sm font-bold text-navy">{type}</h4>
+                  </div>
+                  <p className="text-xs text-gray-400 leading-relaxed pl-4">{desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-teal rounded-2xl p-6 text-white">
+              <h4 className="font-serif text-lg font-normal mb-2">How to Join</h4>
+              <p className="text-white/80 text-xs leading-relaxed mb-4">
+                Interested individuals or institutions can apply through the Secretariat. Each application
+                must be proposed and seconded by existing members (Clause 6.4 of the ACMHR-K Constitution).
+              </p>
+              <ul className="space-y-1.5 text-xs text-white/70">
+                <li className="flex items-center gap-2"><span className="text-gold">✓</span> Participate in decision-making & annual meetings</li>
+                <li className="flex items-center gap-2"><span className="text-gold">✓</span> Access research, advocacy, and capacity-building programs</li>
+                <li className="flex items-center gap-2"><span className="text-gold">✓</span> Promote ACMHR-K's mission and contribute professionally</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ── PARTNERSHIP ── */
+function Partnership() {
+  return (
+    <section id="partnership" className="py-24 px-6 bg-navy">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-14">
+          <span className="inline-block text-teal-light text-xs font-bold tracking-widest uppercase mb-3">Collaborate With Us</span>
+          <h2 className="font-serif text-3xl md:text-4xl text-white font-normal mb-4">Partnership & Network</h2>
+          <p className="text-white/50 text-sm max-w-xl mx-auto leading-relaxed">
+            ACMHR-K values strategic partnerships that enhance research, advocacy, and public health action in Kenya and the region.
+          </p>
+        </div>
+
+        {/* Partnership areas */}
+        <div className="grid md:grid-cols-2 gap-5 mb-12">
+          {[
+            { icon: '📊', title: 'Joint Research & Data Analysis',     desc: 'Co-create studies and share data to advance evidence-based health solutions.' },
+            { icon: '🏥', title: 'Public Health Outreach & Screenings', desc: 'Partner on community screenings and health education campaigns across Kenya.' },
+            { icon: '🎓', title: 'Capacity Building & Exchange',        desc: 'Collaborate on professional training, fellowships, and knowledge-sharing programs.' },
+            { icon: '📜', title: 'Policy Advocacy & Technical Support', desc: 'Work together to advocate for better cardio-metabolic health policies at national level.' },
+          ].map(({ icon, title, desc }) => (
+            <div key={title} className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/8 transition-colors duration-200">
+              <div className="text-2xl mb-3">{icon}</div>
+              <h4 className="text-white font-semibold text-sm mb-2">{title}</h4>
+              <p className="text-white/50 text-xs leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Current collaborators */}
+        <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <h4 className="font-serif text-white text-lg font-normal mb-6 text-center">Current Collaborators</h4>
+          <div className="flex flex-wrap justify-center gap-3">
+            {PARTNERS.map(p => (
+              <span key={p} className="bg-teal/20 text-teal-light border border-teal/20 text-xs font-semibold px-5 py-2 rounded-full">{p}</span>
+            ))}
+          </div>
+          <p className="text-center text-white/40 text-xs mt-6 leading-relaxed max-w-lg mx-auto">
+            Organizations can reach out to the Secretariat through the Contact page or via official correspondence
+            to explore partnership opportunities.
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ── GALLERY ── */
+function Gallery() {
+  const placeholders = [
+    { cat: 'Community Health Screenings',        desc: 'Health screening events conducted in local communities' },
+    { cat: 'Research Workshops & Conferences',   desc: 'Academic and clinical training sessions for practitioners' },
+    { cat: 'Awareness Campaigns',                desc: 'Public education drives on cardio-metabolic health' },
+    { cat: 'Team & Partner Events',              desc: 'Collaborative events with partner organizations' },
+    { cat: 'Ambassador Training 2026',           desc: 'Annual cohort capacity-building program' },
+    { cat: 'Community Outreach',                 desc: 'Grassroots programs in underserved counties' },
+  ]
+
+  return (
+    <section id="gallery" className="py-24 px-6">
+      <div className="max-w-5xl mx-auto">
+        <span className="section-tag">Visual Impact</span>
+        <h2 className="section-title">Gallery</h2>
+        <p className="text-gray-400 text-sm max-w-lg mb-10 leading-relaxed">
+          A visual record of ACMHR-K's activities, community impact, and growth. Each image tells the story of our mission in action.
+        </p>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {placeholders.map(({ cat, desc }, i) => (
+            <div
+              key={i}
+              className="aspect-[4/3] rounded-xl overflow-hidden relative group cursor-pointer"
+              style={{ background: `linear-gradient(${135 + i * 15}deg, ${i % 2 === 0 ? '#005F73' : '#0A9396'} 0%, ${i % 3 === 0 ? '#001219' : '#0D2B35'} 100%)` }}
+            >
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-white/30 text-5xl">
+                📷
+              </div>
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100">
+                <p className="text-white font-semibold text-xs">{cat}</p>
+                <p className="text-white/70 text-[0.65rem] mt-1">{desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8 bg-amber-50 border border-amber-200 rounded-xl px-6 py-4 text-center">
+          <p className="text-amber-700 text-xs font-medium">
+            📸 <strong>Photo slots ready.</strong> Replace placeholder cards by adding your event photos to the <code className="bg-amber-100 px-1.5 py-0.5 rounded text-xs">src/assets/gallery/</code> folder and updating the gallery array in <code className="bg-amber-100 px-1.5 py-0.5 rounded text-xs">ACMHRKWebsite.jsx</code>.
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ── FAQs ── */
+function FAQs() {
+  const [open, setOpen] = useState(null)
+  return (
+    <section id="faqs" className="py-24 px-6 bg-[#f4f9f9]">
+      <div className="max-w-3xl mx-auto">
+        <div className="text-center mb-12">
+          <span className="section-tag">Have Questions?</span>
+          <h2 className="section-title">Frequently Asked Questions</h2>
+        </div>
+        <div className="space-y-3">
+          {FAQS.map(({ q, a }, i) => (
+            <div
+              key={i}
+              className="bg-white rounded-xl border border-black/[0.06] shadow-sm overflow-hidden"
+            >
+              <button
+                className="w-full text-left px-6 py-4 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors"
+                onClick={() => setOpen(open === i ? null : i)}
+              >
+                <span className="text-sm font-semibold text-navy">{q}</span>
+                <span className={`text-teal text-xl font-light flex-shrink-0 transition-transform duration-200 ${open === i ? 'rotate-45' : ''}`}>+</span>
+              </button>
+              {open === i && (
+                <div className="px-6 pb-5 text-sm text-gray-500 leading-relaxed border-t border-black/[0.05] pt-4">
+                  {a}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ── CONTACT ── */
+function Contact() {
+  const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' })
+  const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  const handle = (e) => setForm({ ...form, [e.target.name]: e.target.value })
+
+  const submit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    // ⚠️ Replace YOUR_FORM_ID with your Formspree form ID (free at formspree.io)
+    try {
+      const res = await fetch('https://docs.google.com/forms/d/1tbC2h_aPOKUzH92slR_eXzViV-8Zt8BT2XZhu24XH98/edit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (res.ok) setSent(true)
+      else alert('Submission failed — please email info@acmhr-k.org directly.')
+    } catch {
+      alert('Network error — please email info@acmhr-k.org directly.')
+    }
+    setLoading(false)
+  }
+
+  return (
+    <section id="contact" className="py-24 px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-14">
+          {/* Info */}
+          <div>
+            <span className="section-tag">Get In Touch</span>
+            <h2 className="section-title">Contact Us</h2>
+            <p className="text-gray-400 text-sm mb-8 leading-relaxed">
+              We'd love to hear from you — whether you're a researcher, partner, community member, or potential member.
+              We aim to respond within 48 hours.
+            </p>
+            {[
+              { icon: '📧', label: 'Email',   val: 'info@acmhr-k.org' },
+              { icon: '📞', label: 'Phone',   val: '+254 702 551 785' },
+              { icon: '📍', label: 'Address', val: 'Karatina, Kenya — Head Office\nP.O. Box 2344–00900, Kiambu' },
+              { icon: '🕐', label: 'Hours',   val: 'Monday – Friday: 8:00am – 5:00pm EAT' },
+            ].map(({ icon, label, val }) => (
+              <div key={label} className="flex gap-4 items-start mb-5">
+                <div className="w-10 h-10 bg-[#f4f9f9] rounded-xl flex items-center justify-center text-lg flex-shrink-0">{icon}</div>
+                <div>
+                  <div className="text-[0.7rem] font-bold text-gray-400 uppercase tracking-widest mb-0.5">{label}</div>
+                  <div className="text-sm text-navy font-medium whitespace-pre-line">{val}</div>
+                </div>
+              </div>
+            ))}
+            <div className="mt-6 flex gap-3">
+              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="w-10 h-10 bg-[#f4f9f9] hover:bg-teal hover:text-white rounded-xl flex items-center justify-center text-sm font-bold text-navy transition-all duration-200">f</a>
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="w-10 h-10 bg-[#f4f9f9] hover:bg-teal hover:text-white rounded-xl flex items-center justify-center text-sm font-bold text-navy transition-all duration-200">in</a>
+              <a href="#" className="w-10 h-10 bg-[#f4f9f9] hover:bg-teal hover:text-white rounded-xl flex items-center justify-center text-sm font-bold text-navy transition-all duration-200">𝕏</a>
+            </div>
+          </div>
+
+          {/* Form */}
+          <div>
+            <h3 className="font-serif text-xl text-navy font-normal mb-6">Send Us a Message</h3>
+            {sent ? (
+              <div className="bg-teal/10 border border-teal/30 rounded-xl p-8 text-center">
+                <div className="text-3xl mb-3">✅</div>
+                <p className="text-teal-dark font-semibold">Thank you! We'll be in touch within 48 hours.</p>
+              </div>
+            ) : (
+              <form onSubmit={submit} className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-navy mb-1.5">Full Name *</label>
+                    <input name="name" required value={form.name} onChange={handle}
+                      placeholder="John Doe"
+                      className="w-full border-[1.5px] border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-teal transition-colors" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-navy mb-1.5">Email *</label>
+                    <input name="email" type="email" required value={form.email} onChange={handle}
+                      placeholder="you@example.com"
+                      className="w-full border-[1.5px] border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-teal transition-colors" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-navy mb-1.5">Phone (optional)</label>
+                  <input name="phone" value={form.phone} onChange={handle}
+                    placeholder="+254 700 000 000"
+                    className="w-full border-[1.5px] border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-teal transition-colors" />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-navy mb-1.5">Subject *</label>
+                  <select name="subject" required value={form.subject} onChange={handle}
+                    className="w-full border-[1.5px] border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-teal transition-colors bg-white">
+                    <option value="" disabled>Select a topic…</option>
+                    <option>General Enquiry</option>
+                    <option>Membership Application</option>
+                    <option>Research Collaboration</option>
+                    <option>Partnership Proposal</option>
+                    <option>Donation / Funding</option>
+                    <option>Media & Press</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-navy mb-1.5">Message *</label>
+                  <textarea name="message" required rows={5} value={form.message} onChange={handle}
+                    placeholder="Tell us how we can help…"
+                    className="w-full border-[1.5px] border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-teal transition-colors resize-none" />
+                </div>
+                <button type="submit" disabled={loading}
+                  className="w-full bg-teal text-white py-3.5 rounded-lg font-semibold text-sm transition-all duration-200 hover:bg-teal-dark disabled:opacity-60 disabled:cursor-not-allowed">
+                  {loading ? 'Sending…' : 'Send Message →'}
+                </button>
+                <p className="text-gray-400 text-[0.7rem] text-center">
+                  {/* ⚠️ Set up Formspree at <a href="https://formspree.io" target="_blank" rel="noreferrer" className="text-teal underline">formspree.io</a> and replace YOUR_FORM_ID in the code. */}
+                </p>
+              </form>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ── CTA BANNER ── */
+function CTABanner({ setActive }) {
+  const scrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    setActive(id)
+  }
+  return (
+    <div className="bg-gradient-to-r from-teal-dark via-teal to-teal py-20 px-6 text-center">
+      <h2 className="font-serif text-3xl md:text-4xl text-white font-normal mb-4">Ready to Make a Difference?</h2>
+      <p className="text-white/75 text-sm max-w-md mx-auto mb-8 leading-relaxed">
+        Join ACMHR-K as a member, collaborator, or partner and help shape the future of cardio-metabolic health in Kenya.
+      </p>
+      <div className="flex flex-wrap gap-4 justify-center">
+        <button onClick={() => scrollTo('contact')} className="btn-white">Join the Alliance</button>
+        <button onClick={() => scrollTo('partnership')} className="btn-outline-white">Partner With Us</button>
+      </div>
+    </div>
+  )
+}
+
+/* ── FOOTER ── */
+function Footer({ setActive }) {
+  const scrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    setActive(id)
+  }
+  return (
+    <footer className="bg-navy text-white/55 pt-16 pb-8 px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-4 gap-10 pb-12 border-b border-white/[0.08] mb-8">
+          {/* Brand */}
+          <div className="md:col-span-2">
+            <div className="flex items-center gap-3 mb-4">
+              <img src={logo} alt="ACMHR-K" className="w-12 h-12 rounded-full object-contain" />
+              <div>
+                <div className="font-serif text-white text-base">ACMHR-K</div>
+                <div className="text-[0.65rem] text-white/35">Alliance for CMH & Research · Kenya</div>
+              </div>
+            </div>
+            <p className="text-[0.82rem] text-white/40 leading-relaxed mb-5 max-w-xs">
+              A registered non-profit committed to improving cardio-metabolic health through research,
+              education, and community action across Kenya. Est. 2nd September 2025.
+            </p>
+            <div className="flex gap-2.5">
+              {['f', 'in', '𝕏'].map(s => (
+                <a key={s} href="#" className="w-9 h-9 bg-white/[0.07] hover:bg-teal rounded-lg flex items-center justify-center text-xs font-bold text-white transition-all duration-200">{s}</a>
+              ))}
+            </div>
+          </div>
+
+          {/* Links */}
+          <div>
+            <h5 className="text-[0.7rem] font-bold tracking-widest uppercase text-white mb-4">Organisation</h5>
+            {[['About', 'about'], ['Team', 'team'], ['Governance', 'governance'], ['Careers', 'contact'], ['FAQs', 'faqs']].map(([l, id]) => (
+              <button key={id} onClick={() => scrollTo(id)} className="block text-[0.83rem] text-white/45 hover:text-teal-light mb-2.5 transition-colors">{l}</button>
+            ))}
+          </div>
+          <div>
+            <h5 className="text-[0.7rem] font-bold tracking-widest uppercase text-white mb-4">Contact</h5>
+            <p className="text-[0.83rem] mb-2"><a href="mailto:info@acmhr-k.org" className="text-teal-light hover:underline">info@acmhr-k.org</a></p>
+            <p className="text-[0.83rem] mb-2">+254 702 551 785</p>
+            <p className="text-[0.83rem] leading-relaxed">Karatina, Kenya<br/>P.O. Box 2344–00900, Kiambu</p>
+          </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row justify-between items-center gap-3 text-[0.73rem] text-white/25">
+          <span>© {new Date().getFullYear()} ACMHR-K. All Rights Reserved.</span>
+          <span>Registered under the NGO Coordination Act (1990)</span>
+        </div>
+      </div>
+    </footer>
+  )
+}
+
+/* ─────────────────────────────────────────
+   ROOT COMPONENT
+───────────────────────────────────────── */
+export default function ACMHRKWebsite() {
+  const [active, setActive] = useState('home')
+
+  // Track active section on scroll
+  useEffect(() => {
+    const sections = NAV_LINKS.map(({ id }) => document.getElementById(id)).filter(Boolean)
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id) })
+      },
+      { rootMargin: '-40% 0px -55% 0px' }
+    )
+    sections.forEach(s => observer.observe(s))
+    return () => sections.forEach(s => observer.unobserve(s))
+  }, [])
+
+  return (
+    <div className="font-sans antialiased">
+      <AnnouncementBar />
+      <Navbar active={active} setActive={setActive} />
+      <Hero setActive={setActive} />
+      <StatsBar />
+      <About />
+      <Team />
+      <Research />
+      <Governance />
+      <Partnership />
+      <Gallery />
+      <FAQs />
+      <CTABanner setActive={setActive} />
+      <Contact />
+      <Footer setActive={setActive} />
+    </div>
+  )
+}
