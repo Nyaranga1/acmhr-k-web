@@ -1,6 +1,67 @@
 import { useState, useEffect } from 'react'
 import logo from './assets/logo.png'
 
+/* ─────────────────────────────────────────
+   🚧 MAINTENANCE MODE
+   Set to false when ready to go live
+───────────────────────────────────────── */
+const MAINTENANCE_MODE = true
+
+function MaintenancePage() {
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 text-center relative overflow-hidden"
+      style={{ background: 'linear-gradient(135deg, #001219 0%, #005F73 60%, #0A9396 100%)' }}>
+      {/* Background glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(10,147,150,0.15)_0%,transparent_70%)] pointer-events-none"/>
+
+      <div className="relative max-w-lg mx-auto">
+        {/* Logo */}
+        <img src={logo} alt="ACMHR-K" className="w-24 h-24 rounded-full object-contain mx-auto mb-8 opacity-90" />
+
+        {/* Badge */}
+        <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-teal-light text-[0.72rem] font-bold tracking-widest uppercase px-5 py-1.5 rounded-full mb-7">
+          🚧 Under Maintenance
+        </span>
+
+        {/* Heading */}
+        <h1 className="font-serif text-3xl md:text-5xl text-white font-normal leading-tight mb-4">
+          ACMHR-K Website<br />
+          <span className="text-teal-light">Under Maintenance</span>
+        </h1>
+
+        {/* Message */}
+        <p className="text-white/70 text-sm md:text-base leading-relaxed mb-8 max-w-md mx-auto">
+          We are updating our <strong className="text-white">2026 Training Program</strong> materials and making improvements to the site. Please check back shortly.
+        </p>
+
+        {/* Contact card */}
+        <div className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl px-8 py-6 mb-8">
+          <p className="text-white/60 text-xs uppercase tracking-widest font-bold mb-3">For urgent inquiries</p>
+          <a href="mailto:info@acmhr-k.org" className="text-teal-light text-lg font-semibold hover:text-white transition-colors">
+            info@acmhr-k.org
+          </a>
+          <div className="mt-2 text-white/50 text-sm">+254 702 551785</div>
+        </div>
+
+        <a href="https://www.facebook.com/share/1CgRtLCPQ9/" target="_blank" rel="noreferrer"
+  className="bg-white/10 hover:bg-teal/40 border border-white/15 text-white/60 hover:text-white text-xs font-semibold px-4 py-2 rounded-full transition-all duration-200">
+  Facebook
+</a>
+<a href="https://www.linkedin.com/company/the-cardio-metabolic-care-and-research-foundation-of-kenya/" target="_blank" rel="noreferrer"
+  className="bg-white/10 hover:bg-teal/40 border border-white/15 text-white/60 hover:text-white text-xs font-semibold px-4 py-2 rounded-full transition-all duration-200">
+  LinkedIn
+</a>
+      
+
+        {/* Footer note */}
+        <p className="text-white/25 text-xs mt-10">
+          © {new Date().getFullYear()} ACMHR-K · Alliance for Cardio-Metabolic Health and Research · Kenya
+        </p>
+      </div>
+    </div>
+  )
+}
+
 const NAV_LINKS = [
   { label: 'Home',        id: 'home' },
   { label: 'About',       id: 'about' },
@@ -829,6 +890,8 @@ export default function ACMHRKWebsite() {
     sections.forEach(s => observer.observe(s))
     return () => sections.forEach(s => observer.unobserve(s))
   }, [])
+
+  if (MAINTENANCE_MODE) return <MaintenancePage />
 
   return (
     <div className="font-sans antialiased">
