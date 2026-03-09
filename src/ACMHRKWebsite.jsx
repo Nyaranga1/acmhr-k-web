@@ -139,9 +139,9 @@ const MEMBERSHIP_TYPES = [
   { type: 'Honorary Members',   desc: 'Distinguished individuals recognized for outstanding contributions to health and research.' },
 ]
 
-const PARTNERS = [
-  'County Departments of Health', 'Monash University Research Partners', 'Local & International NGOs',
-]
+// const PARTNERS = [
+//   'We are still yet to c', 'Local & International NGOs',
+// ]
 
 const FAQS = [
   { q: "What is ACMHR-K's main goal?",              a: "To promote prevention, early detection, and management of cardio-metabolic diseases in Kenya through research, education, and advocacy." },
@@ -220,7 +220,7 @@ function Navbar({ active, setActive }) {
           ))}
         </ul>
         <div className="hidden lg:flex">
-          <button onClick={() => scrollTo('contact')} className="bg-teal text-white px-5 py-2 rounded-lg text-[0.82rem] font-semibold hover:bg-teal-dark hover:-translate-y-0.5 transition-all">Join Us</button>
+          <button onClick={() => scrollTo('governance')} className="bg-teal text-white px-5 py-2 rounded-lg text-[0.82rem] font-semibold hover:bg-teal-dark hover:-translate-y-0.5 transition-all">Join Us</button>
         </div>
         <button className="lg:hidden flex flex-col gap-1.5 p-1" onClick={() => setOpen(!open)}>
           <span className={`block w-6 h-0.5 bg-navy transition-all ${open ? 'rotate-45 translate-y-2' : ''}`}/>
@@ -233,7 +233,7 @@ function Navbar({ active, setActive }) {
           {NAV_LINKS.map(({ label, id }) => (
             <button key={id} onClick={() => scrollTo(id)} className="text-left px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:text-teal hover:bg-teal/7">{label}</button>
           ))}
-          <button onClick={() => scrollTo('contact')} className="mt-2 bg-teal text-white px-4 py-2.5 rounded-lg text-sm font-semibold">Join Us</button>
+          <button onClick={() => scrollTo('governance')} className="mt-2 bg-teal text-white px-4 py-2.5 rounded-lg text-sm font-semibold">Join Us</button>
         </div>
       )}
     </nav>
@@ -583,12 +583,7 @@ function Partnership() {
             </div>
           ))}
         </div>
-        <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
-          <h4 className="font-serif text-white text-lg font-normal mb-6 text-center">Current Collaborators</h4>
-          <div className="flex flex-wrap justify-center gap-3">
-            {PARTNERS.map(p => <span key={p} className="bg-teal/20 text-teal-light border border-teal/20 text-xs font-semibold px-5 py-2 rounded-full">{p}</span>)}
-          </div>
-        </div>
+  
       </div>
     </section>
   )
