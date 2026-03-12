@@ -422,7 +422,6 @@ function Research() {
 
 /* ─── GOVERNANCE ─── */
 function Governance() {
-  const [showForm, setShowForm] = useState(false)
   return (
     <section id="governance" className="py-24 px-6 bg-[#f4f9f9]">
       <div className="max-w-5xl mx-auto">
@@ -462,29 +461,6 @@ function Governance() {
                 <a href="mailto:info@acmhr-k.org" className="text-teal font-bold hover:underline">info@acmhr-k.org</a>
                 {' '}and we will guide you through the membership process, including payment details and next steps.
               </p>
-            </div>
-
-            <div className="rounded-2xl overflow-hidden border border-black/[0.08] shadow-sm mb-3">
-              <div className="bg-teal px-5 py-3 flex items-center gap-2">
-                <span className="text-white text-sm">📋</span>
-                <span className="text-white text-xs font-bold uppercase tracking-wider">Membership Application Form</span>
-              </div>
-              <div className="bg-white">
-                <button
-                  onClick={() => setShowForm(!showForm)}
-                  className="w-full bg-navy text-white text-center py-3.5 font-semibold text-sm hover:bg-teal-dark transition-colors duration-200 flex items-center justify-center gap-2"
-                >
-                  {showForm ? '▲ Hide Application Form' : '📋 Open Membership Application Form'}
-                </button>
-                {showForm && (
-                  <iframe
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSe1Jt5Ae7hVmfyAGd2wc9nCvqtOO-VbnKPz8U9CzTRLOG9xGQ/viewform?embedded=true"
-                    width="100%" height="1200" frameBorder="0" marginHeight="0" marginWidth="0"
-                    title="ACMHR-K Membership Form" className="w-full bg-white">
-                    Loading form…
-                  </iframe>
-                )}
-              </div>
             </div>
             <p className="text-center text-gray-400 text-xs mt-3">Questions? Email <a href="mailto:info@acmhr-k.org" className="text-teal hover:underline">info@acmhr-k.org</a></p>
           </div>
