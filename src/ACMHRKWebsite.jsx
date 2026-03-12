@@ -107,10 +107,10 @@ const MEMBERSHIP_TYPES = [
   { type: 'Honorary Members',   desc: 'Distinguished individuals recognized for outstanding contributions to health and research.' },
 ]
 
-const PARTNERS = [
-  'County Departments of Health',
-  'Local & International NGOs',
-]
+// const PARTNERS = [
+//   'County Departments of Health',
+//   'Local & International NGOs',
+// ]
 
 const FAQS = [
   { q: "What is ACMHR-K's main goal?",              a: "To promote prevention, early detection, and management of cardio-metabolic diseases in Kenya through research, education, and advocacy." },
