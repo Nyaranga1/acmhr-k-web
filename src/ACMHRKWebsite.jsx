@@ -108,8 +108,8 @@ const MEMBERSHIP_TYPES = [
 ]
 
 const PARTNERS = [
-  'Karatina University', 'County Departments of Health',
-  'Monash University Research Partners', 'Local & International NGOs',
+  'County Departments of Health',
+  'Local & International NGOs',
 ]
 
 const FAQS = [
