@@ -884,10 +884,13 @@ function Footer({ setActive }) {
         <div className="grid md:grid-cols-4 gap-10 pb-12 border-b border-white/[0.08] mb-8">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <img src={logo} alt="ACMHR-K" className="w-12 h-12 rounded-full object-contain" />
+  <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center flex-shrink-0 overflow-hidden p-1">
+    <img src={logo} alt="ACMHR-K" className="w-full h-full object-contain rounded-full" />
+  </div>
               <div>
-                <div className="font-serif text-white text-base">ACMHR-K</div>
-                <div className="text-[0.65rem] text-white/35">Alliance for Cardio-Metabolic Health & Research · Kenya</div>
+                 <div className="font-serif text-white text-base">ACMHR-K</div>
+                  <div className="text-[0.65rem] text-white/35">Alliance for Cardio-Metabolic Health & Research · Kenya</div>
+                  <div className="text-[0.65rem] text-teal-light/60 font-semibold italic mt-0.5">Health is Wealth</div>
               </div>
             </div>
             <p className="text-[0.82rem] text-white/40 leading-relaxed mb-5 max-w-xs">A registered non-profit committed to improving cardio-metabolic health through research, education, and community action. Est. 2nd September 2025.</p>
@@ -899,7 +902,7 @@ function Footer({ setActive }) {
           </div>
           <div>
             <h5 className="text-[0.7rem] font-bold tracking-widest uppercase text-white mb-4">Organisation</h5>
-            {[['About','about'],['Team','team'],['Governance','governance'],['Events','events'],['FAQs','faqs']].map(([l,id]) => (
+             {[['About','about'],['Team','team'],['Research','research'],['Governance','governance'],['Events','events'],['Gallery','gallery'],['FAQs','faqs']].map(([l,id]) => (
               <button key={id} onClick={() => scrollTo(id)} className="block text-[0.83rem] text-white/45 hover:text-teal-light mb-2.5 transition-colors">{l}</button>
             ))}
           </div>
@@ -910,10 +913,14 @@ function Footer({ setActive }) {
             <p className="text-[0.83rem] leading-relaxed">P.O. Box 2344–00900, Kiambu<br/>31st Avenue, Kamagambo Estate<br/>Thika, Kenya</p>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row justify-between items-center gap-3 text-[0.73rem] text-white/25">
-          <span>© {new Date().getFullYear()} ACMHR-K. All Rights Reserved.</span>
-          <span>Registered under the NGO Coordination Act (1990)</span>
-        </div>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3 text-[0.73rem] text-white/25">
+            <span>© {new Date().getFullYear()} ACMHR-K. All Rights Reserved.</span>
+            <span>Registered under the NGO Coordination Act (1990)</span>
+            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+             className="flex items-center gap-1.5 text-white/40 hover:text-teal-light transition-colors duration-200 font-semibold">
+              Back to top ↑
+             </button>
+           </div>
       </div>
     </footer>
   )
