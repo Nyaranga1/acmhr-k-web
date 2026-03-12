@@ -1,10 +1,6 @@
 import { useState, useEffect } from 'react'
 import logo from './assets/logo.png'
 
-/* ─────────────────────────────────────────
-   🚧 MAINTENANCE MODE
-   Set to false when ready to go live
-───────────────────────────────────────── */
 const MAINTENANCE_MODE = false
 
 function MaintenancePage() {
@@ -39,7 +35,6 @@ function MaintenancePage() {
   )
 }
 
-/* ─── DATA ─── */
 const NAV_LINKS = [
   { label: 'Home',        id: 'home' },
   { label: 'About',       id: 'about' },
@@ -56,24 +51,56 @@ const NAV_LINKS = [
 const STATS = [
   { num: '5',    label: 'Board Members' },
   { num: '7',    label: 'Strategic Objectives' },
-  { num: '10+',  label: 'Regional Partners' },
+  { num: '3+',  label: 'Regional Partners' },
   { num: '2025', label: 'Year Founded' },
 ]
 
 const BOARD = [
-  { name: 'Dr. Simon Okomo Aloo', role: 'Chairperson',  detail: 'PhD Candidate, Monash University',           photo: '/photos/Aloo.png' },
-  { name: 'Stephen Nyaranga',     role: 'IT Lead',       detail: 'Asst. Lecturer & Head of IT, Vatel Rwanda',  photo: '/photos/Stephen.jpg' },
-  { name: 'Silas Ambundo',        role: 'Treasurer',     detail: 'Teacher, Gititu Secondary School',           photo: '/photos/Silas.png' },
-  { name: 'Monica Nduta',         role: 'Secretary',     detail: 'Nutritionist, Kitui County',                 photo: '/photos/Monica.png' },
+  {
+    name: 'Dr. Simon Okomo Aloo',
+    role: 'National Chairperson',
+    detail: 'PhD Candidate, Monash University · Baker Heart & Diabetes Institute',
+    email: 'simon.aloo@acmhr-k.org',
+    scholar: 'https://scholar.google.com/citations?user=YOUR_ID',
+    photo: '/photos/Simon.png',
+    bio: `Dr. Simon Aloo is a biomedical and food science researcher at the Baker Heart and Diabetes Institute, affiliated with Monash University, Australia. His research integrates food science, biotechnology, and clinical metabolomics/lipidomics to understand how dietary and metabolic factors influence cardiometabolic health.\n\nHe earned his BSc in Food Science and Nutrition (First Class Honours) from Karatina University, Kenya, then was awarded the Global Korea Scholarship (GKS-G) for his MSc at Kangwon National University, South Korea. He completed his PhD in Food Science and Biotechnology in 2024, supported by the Brain Korea (BK) and BEST-KNU scholarships. He is currently pursuing a second PhD in Biomedicine (lipidomics) at Monash University under the Monash Graduate Scholarship (MGS).\n\nDr. Aloo has authored over 28 peer-reviewed articles and book chapters. He has received an Award of Excellence from the Ministry of Education of Korea and two Outstanding Academic Achievement Awards from Kangwon National University.`,
+  },
+  {
+    name: 'Ms. Monicah Ndunda',
+    role: 'National Secretary & Project Coordinator',
+    detail: 'Clinical Nutritionist · Kitui County Referral Hospital',
+    email: 'mutindi.monicah@yahoo.com',
+    scholar: null,
+    photo: '/photos/Monica.png',
+    bio: `Monicah Ndunda is a Clinical Nutritionist and Public Health Nutrition professional. She holds a BSc in Food Science and is pursuing an MSc in Public Health Nutrition and Policy at Karatina University, Kenya.\n\nShe serves at Kitui County Referral Hospital providing clinical and community-based nutrition interventions. She is also a Student Research Fellow at ICIPE, where her research explores mealworms and spirulina as sustainable food sources to combat malnutrition in vulnerable populations including Kakuma Refugee Camp.\n\nMonicah is certified in the Integrated Phase Classification (IPC) for Acute Malnutrition. Her interests span maternal and child nutrition, preventive health, and sustainable food systems.`,
+  },
+  {
+    name: 'Mr. Silas Ambundo',
+    role: 'National Treasurer',
+    detail: 'Senior Teacher · Gititu Secondary School',
+    email: 'silasanyanje93@gmail.com',
+    scholar: null,
+    photo: '/photos/Silas.png',
+    bio: `Silas Ambundo is a Senior Teacher at Gititu Secondary School with over six years of experience in teaching and student mentorship. He holds a BSc in Education (First Class Honours) from Karatina University, Kenya, specializing in Mathematics and Physics.\n\nHis teaching philosophy emphasizes interactive learning, critical thinking, and values-based education. He is actively involved in curriculum implementation, academic coordination, and co-curricular mentorship. He currently serves as the Christian Union Patron at Gititu Secondary School.\n\nSilas has a keen interest in educational leadership, curriculum innovation, and youth empowerment.`,
+  },
+  {
+    name: 'Mr. Stephen Nyaranga',
+    role: 'IT Manager',
+    detail: 'PhD Fellow, CLARITY-Africa · Imperial College London',
+    email: 'stephen.nyaranga@acmhr-k.org',
+    scholar: null,
+    photo: '/photos/Stephen.jpg',
+    bio: `Stephen Nyaranga is a young African scientist working at the intersection of climate science, artificial intelligence, and geospatial technology. He is a PhD Fellow in Climate Science under the CLARITY-Africa Program, an international initiative led by Imperial College London in collaboration with AIMS-RIC.\n\nHis research uses deep learning and Sentinel-1 SAR time-series analysis to understand urban flooding, climate extremes, and community vulnerability in African cities. Before his PhD, he completed an MSc in Mathematical Sciences (Data Science) at AIMS–Senegal and an MSc in Geophysics at ICTP–EAIFR. He graduated First Class Honours in Physics and Mathematics from Karatina University, Kenya.\n\nAs Head of IT at Vatel Rwanda, Stephen has led digital transformation initiatives including cloud integration, AI adoption, and faculty training. His research interests span GeoAI, hydrological modeling, Earth observation, and AI for sustainable development.`,
+  },
 ]
 
 const SPEAKERS = [
-  { name: 'Alex Nguma, HSC',      photo: '/photos/Alex.png',      session: 'Burden, Trends & Trajectories of Cardiometabolic Illnesses in Kenya' },
-  { name: 'Ms. Lilian Mumina',    photo: '/photos/Lilian.png',    session: 'Nutrition and Metabolic Wellness: From Food to Function' },
-  { name: 'Eric Daliri, PhD',     photo: '/photos/Eric.png',      session: 'The Gut–Heart Connection: Microbiota and Cardiometabolic Health' },
-  { name: 'Sanni Olakunle, PhD',  photo: '/photos/Olakunle.png',  session: 'Herbal Medicine and Metabolic Health' },
-  { name: 'Simon Aloo, PhD',      photo: '/photos/Aloo.png',      session: 'Lipids and Cardiovascular Risk' },
-  { name: 'Nicholas Odongo, PhD', photo: '/photos/Nick.png',      session: 'Translating Research into Policy and Practice' },
+  { name: 'Alex Nguma, HSC',      photo: '/photos/Alex.png',     session: 'Burden, Trends & Trajectories of Cardiometabolic Illnesses' },
+  { name: 'Ms. Lilian Mumina',    photo: '/photos/Lilian.png',   session: 'Nutrition and Metabolic Wellness: From Food to Function' },
+  { name: 'Eric Daliri, PhD',     photo: '/photos/Eric.png',     session: 'The Gut–Heart Connection: Microbiota and Cardiometabolic Health' },
+  { name: 'Sanni Olakunle, PhD',  photo: '/photos/Olakunle.png', session: 'Herbal Medicine and Metabolic Health' },
+  { name: 'Simon Aloo, PhD',      photo: '/photos/Aloo.png',     session: 'Lipids and Cardiovascular Risk' },
+  { name: 'Nicholas Odongo, PhD', photo: '/photos/Nick.png',     session: 'Translating Research into Policy and Practice' },
 ]
 
 const PARTICIPANTS_2026 = [
@@ -101,26 +128,21 @@ const VALUES = [
 ]
 
 const MEMBERSHIP_TYPES = [
-  { type: 'Student Members',    desc: 'Students pursuing a diploma or higher degree in health-related fields. Annual fee: KSh 1,000.' },
+  { type: 'Student Members',      desc: 'Students pursuing a diploma or higher degree in health-related fields. Annual fee: KSh 1,000.' },
   { type: 'Professional Members', desc: 'Practicing professionals in health sciences, research, or related fields. Annual fee: KSh 1,500.' },
-  { type: 'Corporate Members',  desc: 'Institutions or organizations supporting ACMHR-K programs and research.' },
-  { type: 'Honorary Members',   desc: 'Distinguished individuals recognized for outstanding contributions to health and research.' },
+  { type: 'Corporate Members',    desc: 'Institutions or organizations supporting ACMHR-K programs and research.' },
+  { type: 'Honorary Members',     desc: 'Distinguished individuals recognized for outstanding contributions to health and research.' },
 ]
 
-// const PARTNERS = [
-//   'County Departments of Health',
-//   'Local & International NGOs',
-// ]
-
 const FAQS = [
-  { q: "What is ACMHR-K's main goal?",              a: "To promote prevention, early detection, and management of cardio-metabolic diseases in Kenya through research, education, and advocacy." },
-  { q: "Who can become a member?",                   a: "Any individual or organization aligned with ACMHR-K's mission of advancing cardio-metabolic health." },
-  { q: "How much are membership fees?",              a: "Student membership is KSh 1,000/year and Professional membership is KSh 1,500/year, paid via M-Pesa." },
-  { q: "How do I apply for membership?",             a: "Send your M-Pesa payment, save the receipt, then complete the membership form with your transaction code and proof of payment." },
-  { q: "Can students or volunteers join?",           a: "Yes. ACMHR-K actively encourages student and volunteer engagement in research and community programs." },
-  { q: "What types of partnerships do you accept?",  a: "Academic, clinical, NGO, corporate, and government collaborations that advance cardio-metabolic health." },
-  { q: "How often are general meetings held?",       a: "Once per year (Annual General Meeting) and as needed for special meetings as per the Constitution." },
-  { q: "How can I support ACMHR-K?",                 a: "Join as a member, partner in a project, volunteer for outreach, or donate to support research and community programs." },
+  { q: "What is ACMHR-K's main goal?",             a: "To promote prevention, early detection, and management of cardio-metabolic diseases in Kenya through research, education, and advocacy." },
+  { q: "Who can become a member?",                  a: "Any individual or organization aligned with ACMHR-K's mission of advancing cardio-metabolic health." },
+  { q: "How much are membership fees?",             a: "Student membership is KSh 1,000/year and Professional membership is KSh 1,500/year, paid via M-Pesa." },
+  { q: "How do I apply for membership?",            a: "Email info@acmhr-k.org and our team will guide you through the membership and payment process." },
+  { q: "Can students or volunteers join?",          a: "Yes. ACMHR-K actively encourages student and volunteer engagement in research and community programs." },
+  { q: "What types of partnerships do you accept?", a: "Academic, clinical, NGO, corporate, and government collaborations that advance cardio-metabolic health." },
+  { q: "How often are general meetings held?",      a: "Once per year (Annual General Meeting) and as needed for special meetings as per the Constitution." },
+  { q: "How can I support ACMHR-K?",                a: "Join as a member, partner in a project, volunteer for outreach, or donate to support research and community programs." },
 ]
 
 const TRAINING_SCHEDULE = [
@@ -131,21 +153,6 @@ const TRAINING_SCHEDULE = [
   { day: 'Day 5', title: 'Lipids and Cardiovascular Risk',                                         focus: 'Lipid dysregulation in cardiovascular diseases' },
   { day: 'Day 6', title: 'Translating Research into Policy and Practice',                          focus: 'Policy dialogue and innovation for improved cardiometabolic outcomes' },
 ]
-
-/* ─── PHOTO HELPER ─── */
-function PhotoCard({ src, name, sub, size = 'md' }) {
-  const [err, setErr] = useState(false)
-  const dim = size === 'sm' ? 'w-16 h-16' : size === 'lg' ? 'w-28 h-28' : 'w-20 h-20'
-  return (
-    <div className={`${dim} rounded-full overflow-hidden bg-gradient-to-br from-teal-dark to-teal flex items-center justify-center flex-shrink-0 border-2 border-teal-light/20`}>
-      {!err ? (
-        <img src={src} alt={name} className="w-full h-full object-cover" onError={() => setErr(true)} />
-      ) : (
-        <span className="text-white/60 text-2xl">👤</span>
-      )}
-    </div>
-  )
-}
 
 /* ─── ANNOUNCEMENT BAR ─── */
 function AnnouncementBar() {
@@ -189,7 +196,7 @@ function Navbar({ active, setActive }) {
           ))}
         </ul>
         <div className="hidden lg:flex">
-          <button onClick={() => scrollTo('contact')} className="bg-teal text-white px-5 py-2 rounded-lg text-[0.82rem] font-semibold hover:bg-teal-dark hover:-translate-y-0.5 transition-all">Join Us</button>
+          <button onClick={() => scrollTo('governance')} className="bg-teal text-white px-5 py-2 rounded-lg text-[0.82rem] font-semibold hover:bg-teal-dark hover:-translate-y-0.5 transition-all">Join Us</button>
         </div>
         <button className="lg:hidden flex flex-col gap-1.5 p-1" onClick={() => setOpen(!open)}>
           <span className={`block w-6 h-0.5 bg-navy transition-all ${open ? 'rotate-45 translate-y-2' : ''}`}/>
@@ -202,7 +209,7 @@ function Navbar({ active, setActive }) {
           {NAV_LINKS.map(({ label, id }) => (
             <button key={id} onClick={() => scrollTo(id)} className="text-left px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:text-teal hover:bg-teal/7">{label}</button>
           ))}
-          <button onClick={() => scrollTo('contact')} className="mt-2 bg-teal text-white px-4 py-2.5 rounded-lg text-sm font-semibold">Join Us</button>
+          <button onClick={() => scrollTo('governance')} className="mt-2 bg-teal text-white px-4 py-2.5 rounded-lg text-sm font-semibold">Join Us</button>
         </div>
       )}
     </nav>
@@ -215,7 +222,7 @@ function Hero({ setActive }) {
   const scrollTo = (id) => { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); setActive(id) }
   return (
     <section id="home" className="min-h-[88vh] flex items-center justify-center text-center px-6 py-20 relative overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, rgba(0,18,25,0.85) 0%, rgba(0,95,115,0.70) 55%, rgba(10,147,150,0.50) 100%), url("/photos/Home_pic.jpeg") center/cover no-repeat' }}>
+      style={{ background: 'linear-gradient(135deg, rgba(0,18,25,0.90) 0%, rgba(0,95,115,0.70) 55%, rgba(10,147,150,0.50) 100%), url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1800&q=80") center/cover no-repeat' }}>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_70%,rgba(10,147,150,0.12)_0%,transparent_60%)] pointer-events-none"/>
       <div className="relative max-w-3xl mx-auto">
         <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-teal-light text-[0.75rem] font-bold tracking-widest uppercase px-5 py-1.5 rounded-full mb-7">
@@ -233,29 +240,28 @@ function Hero({ setActive }) {
           Promoting prevention and early detection of cardio-metabolic diseases including diabetes, hypertension, obesity, and cardiovascular conditions.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
-          <button onClick={() => scrollTo('contact')} className="btn-primary text-sm px-8 py-3.5">Join Our Network</button>
+          <button onClick={() => scrollTo('governance')} className="btn-primary text-sm px-8 py-3.5">Join Our Network</button>
           <button onClick={() => setShowVideo(true)}
             className="flex items-center gap-2 bg-white/15 hover:bg-white/25 border border-white/30 text-white font-semibold px-8 py-3.5 rounded-lg text-sm transition-all duration-200">
             <span className="w-7 h-7 bg-red-600 rounded-full flex items-center justify-center text-xs">▶</span>
             Watch on YouTube
           </button>
-          <button onClick={() => scrollTo('contact')} className="bg-gold/90 hover:bg-gold text-navy font-bold px-8 py-3.5 rounded-lg text-sm transition-all duration-200 hover:-translate-y-0.5">Partner With Us</button>
+          <button onClick={() => scrollTo('partnership')} className="bg-gold/90 hover:bg-gold text-navy font-bold px-8 py-3.5 rounded-lg text-sm transition-all duration-200 hover:-translate-y-0.5">Partner With Us</button>
+        </div>
+        {/* Home photo */}
+        <div className="mt-10 max-w-2xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+          <img src="/photos/Home_pic.jpeg" alt="ACMHR-K" className="w-full object-cover"
+            onError={e => e.target.style.display='none'} />
         </div>
       </div>
 
-      {/* YouTube Modal */}
       {showVideo && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={() => setShowVideo(false)}>
           <div className="relative w-full max-w-3xl" onClick={e => e.stopPropagation()}>
             <button onClick={() => setShowVideo(false)} className="absolute -top-10 right-0 text-white text-sm font-bold hover:text-teal-light">✕ Close</button>
             <div className="aspect-video rounded-2xl overflow-hidden shadow-2xl">
-              <iframe
-                src="https://www.youtube.com/embed/EiViNlut_58?autoplay=1"
-                title="ACMHR-K Video"
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              <iframe src="https://www.youtube.com/embed/EiViNlut_58?autoplay=1" title="ACMHR-K Video"
+                className="w-full h-full" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
             </div>
           </div>
         </div>
@@ -323,6 +329,7 @@ function About() {
 
 /* ─── TEAM ─── */
 function Team() {
+  const [selected, setSelected] = useState(null)
   return (
     <section id="team" className="py-24 px-6 bg-navy">
       <div className="max-w-5xl mx-auto">
@@ -332,15 +339,16 @@ function Team() {
           <p className="text-white/50 text-sm max-w-lg mx-auto">A multidisciplinary board providing strategic leadership and oversight.</p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {BOARD.map(({ name, role, detail, photo }) => (
-            <div key={name} className="text-center group">
+          {BOARD.map((member) => (
+            <div key={member.name} className="text-center group cursor-pointer" onClick={() => setSelected(member)}>
               <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 border-3 border-teal-light/20 group-hover:border-teal-light/60 transition-all duration-300 bg-gradient-to-br from-teal-dark to-teal">
-                <img src={photo} alt={name} className="w-full h-full object-cover"
+                <img src={member.photo} alt={member.name} className="w-full h-full object-cover"
                   onError={e => { e.target.style.display='none'; e.target.parentNode.innerHTML='<div class="w-full h-full flex items-center justify-center text-4xl">👤</div>' }} />
               </div>
-              <h4 className="font-serif text-white text-sm font-normal mb-1 leading-tight">{name}</h4>
-              <div className="text-teal-light text-[0.68rem] font-bold uppercase tracking-wider mb-1">{role}</div>
-              <div className="text-white/40 text-[0.7rem] leading-tight">{detail}</div>
+              <h4 className="font-serif text-white text-sm font-normal mb-1 leading-tight">{member.name}</h4>
+              <div className="text-teal-light text-[0.68rem] font-bold uppercase tracking-wider mb-1">{member.role}</div>
+              <div className="text-white/40 text-[0.7rem] leading-tight">{member.detail}</div>
+              <div className="mt-2 text-teal-light text-[0.65rem] font-semibold opacity-0 group-hover:opacity-100 transition-opacity">View Profile →</div>
             </div>
           ))}
         </div>
@@ -349,6 +357,41 @@ function Team() {
           <p className="text-white/55 text-sm leading-relaxed">The Secretariat, led by a Chief Executive Officer, oversees daily operations, program implementation, and communication — acting as the link between the Board, members, and partners.</p>
         </div>
       </div>
+
+      {selected && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 overflow-y-auto" onClick={() => setSelected(null)}>
+          <div className="bg-white rounded-2xl max-w-2xl w-full my-8 overflow-hidden shadow-2xl" onClick={e => e.stopPropagation()}>
+            <div className="bg-navy px-8 py-6 flex items-center gap-5">
+              <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-teal-light/30 bg-gradient-to-br from-teal-dark to-teal flex-shrink-0">
+                <img src={selected.photo} alt={selected.name} className="w-full h-full object-cover"
+                  onError={e => { e.target.style.display='none'; e.target.parentNode.innerHTML='<div class="w-full h-full flex items-center justify-center text-3xl">👤</div>' }} />
+              </div>
+              <div>
+                <h3 className="font-serif text-white text-xl font-normal">{selected.name}</h3>
+                <div className="text-teal-light text-xs font-bold uppercase tracking-wider mt-1">{selected.role}</div>
+                <div className="text-white/50 text-xs mt-1">{selected.detail}</div>
+              </div>
+              <button onClick={() => setSelected(null)} className="ml-auto text-white/40 hover:text-white text-xl self-start">✕</button>
+            </div>
+            <div className="px-8 py-6">
+              <div className="flex flex-wrap gap-3 mb-5">
+                <a href={`mailto:${selected.email}`} className="flex items-center gap-2 bg-teal/10 text-teal text-xs font-semibold px-4 py-2 rounded-full hover:bg-teal hover:text-white transition-all">
+                  ✉ {selected.email}
+                </a>
+                {selected.scholar && (
+                  <a href={selected.scholar} target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-blue-50 text-blue-600 text-xs font-semibold px-4 py-2 rounded-full hover:bg-blue-600 hover:text-white transition-all">
+                    🎓 Google Scholar
+                  </a>
+                )}
+              </div>
+              <h4 className="text-xs font-bold text-navy uppercase tracking-widest mb-3">Profile Summary</h4>
+              {selected.bio.split('\n\n').map((para, i) => (
+                <p key={i} className="text-gray-500 text-sm leading-relaxed mb-3">{para}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
@@ -379,6 +422,7 @@ function Research() {
 
 /* ─── GOVERNANCE ─── */
 function Governance() {
+  const [showForm, setShowForm] = useState(false)
   return (
     <section id="governance" className="py-24 px-6 bg-[#f4f9f9]">
       <div className="max-w-5xl mx-auto">
@@ -388,9 +432,9 @@ function Governance() {
             <h2 className="section-title">Governance & Membership</h2>
             <div className="space-y-4 mb-8">
               {[
-                { title: 'Board of Directors',  desc: 'Provides strategic leadership and oversight (5–9 members). Sets policy direction and ensures accountability.' },
-                { title: 'The Secretariat',     desc: 'Headed by the CEO, handles day-to-day management, program implementation, and external communications.' },
-                { title: 'General Assembly',    desc: 'The supreme decision-making body comprising all members. Meets annually for the AGM.' },
+                { title: 'Board of Directors', desc: 'Provides strategic leadership and oversight (5–9 members). Sets policy direction and ensures accountability.' },
+                { title: 'The Secretariat',    desc: 'Headed by the CEO, handles day-to-day management, program implementation, and external communications.' },
+                { title: 'General Assembly',   desc: 'The supreme decision-making body comprising all members. Meets annually for the AGM.' },
               ].map(({ title, desc }, i) => (
                 <div key={title} className="flex gap-4 items-start bg-white rounded-xl p-5 border border-black/[0.05] shadow-sm">
                   <div className="w-9 h-9 bg-teal rounded-xl text-white flex items-center justify-center font-bold text-sm flex-shrink-0">{i + 1}</div>
@@ -408,24 +452,40 @@ function Governance() {
             </div>
           </div>
 
-          {/* JOIN / PAYMENT */}
           <div>
             <span className="section-tag">Join ACMHR-K</span>
             <h3 className="font-serif text-2xl text-navy font-normal mb-6">How to Join</h3>
 
-            <div className="bg-[#f4f9f9] border border-black/[0.06] rounded-2xl p-6 mb-6 flex items-start gap-4">
-  <div className="w-10 h-10 bg-teal/10 rounded-xl flex items-center justify-center text-lg flex-shrink-0">✉️</div>
-  <div>
-    <h4 className="text-sm font-bold text-navy mb-1">Interested in Joining?</h4>
-    <p className="text-xs text-gray-400 leading-relaxed mb-3">
-      For membership inquiries, fees, and registration details, please reach out to us directly and we will guide you through the process.
-    </p>
-    <a href="mailto:info@acmhr-k.org" className="inline-flex items-center gap-2 bg-teal text-white text-xs font-semibold px-4 py-2 rounded-full hover:bg-teal-dark transition-colors">
-      ✉ info@acmhr-k.org
-    </a>
-  </div>
-</div>
-          
+            <div className="bg-teal/10 border border-teal/20 rounded-2xl p-6 mb-6">
+              <p className="text-sm text-navy leading-relaxed">
+                To join ACMHR-K, please email us at{' '}
+                <a href="mailto:info@acmhr-k.org" className="text-teal font-bold hover:underline">info@acmhr-k.org</a>
+                {' '}and we will guide you through the membership process, including payment details and next steps.
+              </p>
+            </div>
+
+            <div className="rounded-2xl overflow-hidden border border-black/[0.08] shadow-sm mb-3">
+              <div className="bg-teal px-5 py-3 flex items-center gap-2">
+                <span className="text-white text-sm">📋</span>
+                <span className="text-white text-xs font-bold uppercase tracking-wider">Membership Application Form</span>
+              </div>
+              <div className="bg-white">
+                <button
+                  onClick={() => setShowForm(!showForm)}
+                  className="w-full bg-navy text-white text-center py-3.5 font-semibold text-sm hover:bg-teal-dark transition-colors duration-200 flex items-center justify-center gap-2"
+                >
+                  {showForm ? '▲ Hide Application Form' : '📋 Open Membership Application Form'}
+                </button>
+                {showForm && (
+                  <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSe1Jt5Ae7hVmfyAGd2wc9nCvqtOO-VbnKPz8U9CzTRLOG9xGQ/viewform?embedded=true"
+                    width="100%" height="1200" frameBorder="0" marginHeight="0" marginWidth="0"
+                    title="ACMHR-K Membership Form" className="w-full bg-white">
+                    Loading form…
+                  </iframe>
+                )}
+              </div>
+            </div>
             <p className="text-center text-gray-400 text-xs mt-3">Questions? Email <a href="mailto:info@acmhr-k.org" className="text-teal hover:underline">info@acmhr-k.org</a></p>
           </div>
         </div>
@@ -443,7 +503,7 @@ function Partnership() {
           <span className="inline-block text-teal-light text-xs font-bold tracking-widest uppercase mb-3">Collaborate With Us</span>
           <h2 className="font-serif text-3xl md:text-4xl text-white font-normal mb-4">Partnership & Network</h2>
         </div>
-        <div className="grid md:grid-cols-2 gap-5 mb-12">
+        <div className="grid md:grid-cols-2 gap-5">
           {[
             { icon: '📊', title: 'Joint Research & Data Analysis',      desc: 'Co-create studies and share data to advance evidence-based health solutions.' },
             { icon: '🏥', title: 'Public Health Outreach & Screenings', desc: 'Partner on community screenings and health education campaigns across Kenya.' },
@@ -456,12 +516,6 @@ function Partnership() {
               <p className="text-white/50 text-xs leading-relaxed">{desc}</p>
             </div>
           ))}
-        </div>
-        <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
-          <h4 className="font-serif text-white text-lg font-normal mb-6 text-center">Current Collaborators</h4>
-          <div className="flex flex-wrap justify-center gap-3">
-            {PARTNERS.map(p => <span key={p} className="bg-teal/20 text-teal-light border border-teal/20 text-xs font-semibold px-5 py-2 rounded-full">{p}</span>)}
-          </div>
         </div>
       </div>
     </section>
@@ -477,7 +531,6 @@ function Events() {
         <span className="section-tag">2026 Program</span>
         <h2 className="section-title">Ambassador Training Program</h2>
 
-        {/* Status banner */}
         <div className="bg-teal/10 border border-teal/30 rounded-xl px-6 py-4 mb-10 flex items-center gap-4">
           <span className="text-2xl">🎓</span>
           <div>
@@ -486,13 +539,12 @@ function Events() {
           </div>
         </div>
 
-        {/* Key info cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
           {[
-            { icon: '📅', label: 'Duration',    val: 'Feb 7 – 28, 2026' },
-            { icon: '💻', label: 'Mode',        val: 'Online via Zoom' },
-            { icon: '🎓', label: 'Sessions',    val: '6 Sessions' },
-            { icon: '🏛️', label: 'Graduation',  val: 'Nairobi, March 2026' },
+            { icon: '📅', label: 'Duration',   val: 'Feb 7 – 28, 2026' },
+            { icon: '💻', label: 'Mode',       val: 'Online via Zoom' },
+            { icon: '🎓', label: 'Sessions',   val: '6 Sessions' },
+            { icon: '🏛️', label: 'Graduation', val: 'Nairobi, July 2026 — exact date will be communicated' },
           ].map(({ icon, label, val }) => (
             <div key={label} className="bg-white rounded-xl p-5 border border-black/[0.05] shadow-sm text-center">
               <div className="text-2xl mb-2">{icon}</div>
@@ -502,7 +554,6 @@ function Events() {
           ))}
         </div>
 
-        {/* Tabs */}
         <div className="flex gap-2 mb-8 flex-wrap">
           {[
             { id: 'overview',     label: 'Overview' },
@@ -517,7 +568,6 @@ function Events() {
           ))}
         </div>
 
-        {/* Tab: Overview */}
         {tab === 'overview' && (
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white rounded-2xl p-7 border border-black/[0.05] shadow-sm">
@@ -556,58 +606,48 @@ function Events() {
           </div>
         )}
 
-        {/* Tab: Speakers */}
-        {tab === 'speakers' && (
-          <div>
-            <div className="bg-white rounded-2xl p-7 border border-black/[0.05] shadow-sm mb-6">
-              <h3 className="font-serif text-xl text-navy font-normal mb-2">Distinguished Speakers</h3>
-              <div className="w-10 h-0.5 bg-teal mb-5"/>
-              <p className="text-gray-500 text-sm leading-relaxed mb-8">
-                ACMHR-K carefully invited speakers with extensive experience in relevant fields to ensure participants are well trained and gain valuable networking opportunities with internationally renowned experts.
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {SPEAKERS.map(({ name, photo, session }) => (
-                  <div key={name} className="bg-[#f4f9f9] rounded-2xl overflow-hidden border border-black/[0.05] shadow-sm group hover:shadow-md transition-all duration-200">
-                    <div className="w-full aspect-square overflow-hidden bg-gradient-to-br from-teal-dark to-teal">
-                      <img src={photo} alt={name} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
-                        onError={e => { e.target.style.display='none'; e.target.parentNode.innerHTML='<div class="w-full h-full flex items-center justify-center text-6xl text-white/30">👤</div>' }} />
-                    </div>
-                    <div className="p-5">
-                      <h4 className="font-serif text-navy text-base font-semibold mb-1">{name}</h4>
-                      <div className="w-8 h-0.5 bg-teal mb-2"/>
-                      <p className="text-gray-500 text-xs leading-relaxed">{session}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+         {tab === 'speakers' && (
+  <div className="bg-white rounded-2xl p-7 border border-black/[0.05] shadow-sm">
+    <h3 className="font-serif text-xl text-navy font-normal mb-2">Distinguished Speakers</h3>
+    <div className="w-10 h-0.5 bg-teal mb-5"/>
+    <p className="text-gray-500 text-sm leading-relaxed mb-8">
+      ACMHR-K carefully invited speakers with extensive experience in relevant fields to ensure participants are well trained and gain valuable networking opportunities with internationally renowned experts.
+    </p>
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+      {SPEAKERS.map(({ name, photo, session }) => (
+        <div key={name} className="group rounded-xl overflow-hidden border border-black/[0.06] shadow-sm hover:shadow-md transition-all duration-300">
+          <div className="aspect-[3/4] overflow-hidden bg-[#f4f9f9]">
+            <img src={photo} alt={name} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+              onError={e => { e.target.parentNode.innerHTML='<div class="w-full h-full flex items-center justify-center text-4xl text-gray-300">👤</div>' }} />
           </div>
-        )}
-
-        {/* Tab: Participants */}
+          <div className="p-4 bg-white">
+            <h4 className="font-serif text-navy text-sm font-semibold mb-1">{name}</h4>
+            <div className="text-teal text-[0.65rem] font-bold uppercase tracking-wider leading-snug">{session}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
         {tab === 'participants' && (
           <div className="bg-white rounded-2xl p-7 border border-black/[0.05] shadow-sm">
-            <h3 className="font-serif text-xl text-navy font-normal mb-2">Selected Participants — 2026 Cohort</h3>
+            <h3 className="font-serif text-xl text-navy font-normal mb-2">2026 Cohort of ACMHR-K Ambassadors</h3>
             <div className="w-10 h-0.5 bg-teal mb-4"/>
             <p className="text-gray-500 text-sm leading-relaxed mb-8">
               After careful consideration, we are proud to present the 2026 Cohort of ACMHR-K Ambassadors. These individuals were competitively selected to undergo a three-week training program designed to build capacity in cardiometabolic disease prevention and management in Kenya.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {PARTICIPANTS_2026.map(name => {
-                const filename = name
-                return (
-                  <div key={name} className="text-center group">
-                    <div className="w-full aspect-square rounded-xl overflow-hidden bg-white border-2 border-teal/10 group-hover:border-teal/40 transition-all duration-200 mb-2 shadow-sm">
-                      <img src={`/photos/${filename}.png`} alt={name} className="w-full h-full object-contain"
-                        onError={e => { e.target.style.display='none'; e.target.parentNode.innerHTML='<div class="w-full h-full flex items-center justify-center text-4xl bg-gradient-to-br from-teal/10 to-teal/5">👤</div>' }} />
-                    </div>
-                    <p className="text-sm font-semibold text-navy leading-tight">{name}</p>
-                    <p className="text-[0.65rem] text-teal font-bold uppercase tracking-wide">Ambassador</p>
+              {PARTICIPANTS_2026.map(name => (
+                <div key={name} className="text-center group">
+                  <div className="w-full aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-teal/20 to-teal/5 border-2 border-teal/10 group-hover:border-teal/40 transition-all duration-200 mb-2">
+                    <img src={`/photos/${name}.png`} alt={name} className="w-full h-full object-cover"
+                      onError={e => { e.target.style.display='none'; e.target.parentNode.innerHTML='<div class="w-full h-full flex items-center justify-center text-2xl">👤</div>' }} />
                   </div>
-                )
-              })}
+                  <p className="text-xs font-semibold text-navy leading-tight">{name}</p>
+                  <p className="text-[0.6rem] text-teal font-bold uppercase tracking-wide">Ambassador</p>
+                </div>
+              ))}
             </div>
-            {/* Group photo */}
             <div className="mt-8">
               <h4 className="font-semibold text-navy text-sm mb-3">Group Photo</h4>
               <img src="/photos/Overall.png" alt="2026 Cohort Group Photo" className="w-full rounded-xl object-cover border border-black/[0.05]"
@@ -616,7 +656,6 @@ function Events() {
           </div>
         )}
 
-        {/* Tab: Schedule */}
         {tab === 'schedule' && (
           <div className="bg-white rounded-2xl border border-black/[0.05] shadow-sm overflow-hidden">
             <div className="bg-teal px-6 py-4">
@@ -639,7 +678,6 @@ function Events() {
                 </div>
               ))}
             </div>
-
           </div>
         )}
       </div>
@@ -650,7 +688,6 @@ function Events() {
 /* ─── GALLERY ─── */
 function Gallery() {
   const [lightbox, setLightbox] = useState(null)
-
   const media = [
     { type: 'image', src: '/Gallery/Gallery1.jpeg',           caption: 'ACMHR-K Event' },
     { type: 'image', src: '/Gallery/Gallery2.jpeg',           caption: 'ACMHR-K Event' },
@@ -661,20 +698,17 @@ function Gallery() {
     { type: 'image', src: '/Gallery/Gallery8.jpeg',           caption: 'ACMHR-K Event' },
     { type: 'video', src: '/Gallery/Video_of_the_lab.mp4.mp4', caption: 'Video of the Lab' },
   ]
-
   return (
     <section id="gallery" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
         <span className="section-tag">Visual Impact</span>
         <h2 className="section-title">Gallery</h2>
         <p className="text-gray-400 text-sm mb-10 leading-relaxed max-w-lg">
-          A glimpse into our work — events, training sessions, and community outreach. More photos and videos will be added as our programs grow.
+          A glimpse into our work — events, training sessions, and community outreach.
         </p>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {media.map((item, i) => (
-            <div key={i}
-              className="group relative rounded-2xl overflow-hidden cursor-pointer border border-black/[0.06] shadow-sm hover:shadow-lg transition-all duration-300"
+            <div key={i} className="group relative rounded-2xl overflow-hidden cursor-pointer border border-black/[0.06] shadow-sm hover:shadow-lg transition-all duration-300"
               onClick={() => setLightbox(i)}>
               {item.type === 'image' ? (
                 <>
@@ -684,24 +718,19 @@ function Gallery() {
                       onError={e => { e.target.parentNode.innerHTML = '<div class="w-full h-full flex items-center justify-center text-4xl text-gray-300">🖼️</div>' }} />
                   </div>
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-5 py-2 text-white text-xs font-bold">
-                      View Full Size
-                    </div>
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-5 py-2 text-white text-xs font-bold">View Full Size</div>
                   </div>
                 </>
               ) : (
-                <>
-                  <div className="aspect-[4/3] bg-navy flex items-center justify-center relative overflow-hidden">
-                    <video src={item.src} className="w-full h-full object-cover opacity-70"
-                      muted preload="metadata"
-                      onError={e => { e.target.style.display='none' }} />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 bg-white/20 backdrop-blur-sm border-2 border-white/50 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-                        <span className="text-white text-2xl ml-1">▶</span>
-                      </div>
+                <div className="aspect-[4/3] bg-navy flex items-center justify-center relative overflow-hidden">
+                  <video src={item.src} className="w-full h-full object-cover opacity-70" muted preload="metadata"
+                    onError={e => e.target.style.display='none'} />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-16 h-16 bg-white/20 backdrop-blur-sm border-2 border-white/50 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                      <span className="text-white text-2xl ml-1">▶</span>
                     </div>
                   </div>
-                </>
+                </div>
               )}
               <div className="bg-white px-4 py-3 flex items-center gap-2">
                 <span className="text-sm">{item.type === 'video' ? '🎬' : '📷'}</span>
@@ -710,23 +739,17 @@ function Gallery() {
               </div>
             </div>
           ))}
-
-
         </div>
       </div>
 
-      {/* Lightbox */}
       {lightbox !== null && (
-        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-          onClick={() => setLightbox(null)}>
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4" onClick={() => setLightbox(null)}>
           <button className="absolute top-5 right-6 text-white/70 hover:text-white text-sm font-bold">✕ Close</button>
           <div className="max-w-4xl w-full" onClick={e => e.stopPropagation()}>
             {media[lightbox].type === 'image' ? (
-              <img src={media[lightbox].src} alt={media[lightbox].caption}
-                className="w-full max-h-[80vh] object-contain rounded-xl" />
+              <img src={media[lightbox].src} alt={media[lightbox].caption} className="w-full max-h-[80vh] object-contain rounded-xl" />
             ) : (
-              <video src={media[lightbox].src} controls autoPlay
-                className="w-full max-h-[80vh] rounded-xl bg-black" />
+              <video src={media[lightbox].src} controls autoPlay className="w-full max-h-[80vh] rounded-xl bg-black" />
             )}
             <p className="text-white/60 text-sm text-center mt-4">{media[lightbox].caption}</p>
             <div className="flex justify-center gap-3 mt-4">
@@ -777,7 +800,7 @@ function Contact() {
   const submit = async (e) => {
     e.preventDefault(); setLoading(true)
     try {
-      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      const res = await fetch('https://formspree.io/f/xaqpqazd', {
         method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(form),
       })
@@ -809,8 +832,8 @@ function Contact() {
               </div>
             ))}
             <div className="mt-6 flex gap-3">
-              <a href="https://www.facebook.com/share/1CgRtLCPQ9/" target="_blank" rel="noreferrer" className="w-10 h-10 bg-[#f4f9f9] hover:bg-teal hover:text-white rounded-xl flex items-center justify-center text-sm font-bold text-navy transition-all">f</a>
-              <a href="https://www.linkedin.com/company/the-cardio-metabolic-care-and-research-foundation-of-kenya/" target="_blank" rel="noreferrer" className="w-10 h-10 bg-[#f4f9f9] hover:bg-teal hover:text-white rounded-xl flex items-center justify-center text-sm font-bold text-navy transition-all">in</a>
+              <a href="https://www.facebook.com/share/1CgRtLCPQ9/" target="_blank" rel="noreferrer" className="w-10 h-10 bg-[#f4f9f9] hover:bg-blue-600 hover:text-white rounded-xl flex items-center justify-center text-sm font-bold text-navy transition-all">f</a>
+              <a href="https://www.linkedin.com/company/the-cardio-metabolic-care-and-research-foundation-of-kenya/" target="_blank" rel="noreferrer" className="w-10 h-10 bg-[#f4f9f9] hover:bg-blue-500 hover:text-white rounded-xl flex items-center justify-center text-sm font-bold text-navy transition-all">in</a>
               <a href="https://www.youtube.com/watch?v=EiViNlut_58" target="_blank" rel="noreferrer" className="w-10 h-10 bg-[#f4f9f9] hover:bg-red-600 hover:text-white rounded-xl flex items-center justify-center text-sm font-bold text-navy transition-all">▶</a>
             </div>
           </div>
@@ -869,7 +892,7 @@ function CTABanner({ setActive }) {
       <h2 className="font-serif text-3xl md:text-4xl text-white font-normal mb-4">Ready to Make a Difference?</h2>
       <p className="text-white/75 text-sm max-w-md mx-auto mb-8 leading-relaxed">Join ACMHR-K as a member, collaborator, or partner and help shape the future of cardio-metabolic health in Kenya.</p>
       <div className="flex flex-wrap gap-4 justify-center">
-        <button onClick={() => scrollTo('contact')} className="btn-white">Join the Alliance</button>
+        <button onClick={() => scrollTo('governance')} className="btn-white">Join the Alliance</button>
         <button onClick={() => scrollTo('partnership')} className="btn-outline-white">Partner With Us</button>
       </div>
     </div>
