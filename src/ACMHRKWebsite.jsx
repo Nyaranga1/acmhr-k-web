@@ -498,6 +498,64 @@ function Partnership() {
   )
 }
 
+/* ─── PARTICIPANTS TAB ─── */
+function ParticipantsTab() {
+  const [participantLightbox, setParticipantLightbox] = useState(null)
+  return (
+    <div className="bg-white rounded-2xl p-7 border border-black/[0.05] shadow-sm">
+      <h3 className="font-serif text-xl text-navy font-normal mb-2">2026 Cohort of ACMHR-K Ambassadors</h3>
+      <div className="w-10 h-0.5 bg-teal mb-4"/>
+      <p className="text-gray-500 text-sm leading-relaxed mb-8">
+        After careful consideration, we are proud to present the 2026 Cohort of ACMHR-K Ambassadors. These individuals were competitively selected to undergo a three-week training program designed to build capacity in cardiometabolic disease prevention and management in Kenya.
+      </p>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {PARTICIPANTS_2026.map((name, i) => (
+          <div key={name} className="group cursor-pointer" onClick={() => setParticipantLightbox(i)}>
+            <div className="w-full overflow-hidden rounded-xl border border-black/[0.06] shadow-sm group-hover:shadow-md transition-all duration-300 bg-[#f4f9f9]">
+              <img src={`/photos/${name}.png`} alt={name}
+                className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
+                onError={e => { e.target.parentNode.innerHTML='<div class="w-full aspect-square flex items-center justify-center text-4xl text-gray-300">👤</div>' }} />
+            </div>
+            <div className="mt-2 text-center">
+              <p className="text-xs font-semibold text-navy leading-tight">{name}</p>
+              <p className="text-[0.6rem] text-teal font-bold uppercase tracking-wide">Ambassador</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="mt-8">
+        <h4 className="font-semibold text-navy text-sm mb-3">Group Photo</h4>
+        <img src="/photos/Overall.png" alt="2026 Cohort Group Photo"
+          className="w-full rounded-xl object-cover border border-black/[0.05]"
+          onError={e => e.target.style.display='none'} />
+      </div>
+      {participantLightbox !== null && (
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          onClick={() => setParticipantLightbox(null)}>
+          <button className="absolute top-5 right-6 text-white/70 hover:text-white text-sm font-bold">✕ Close</button>
+          <div className="max-w-lg w-full" onClick={e => e.stopPropagation()}>
+            <img src={`/photos/${PARTICIPANTS_2026[participantLightbox]}.png`}
+              alt={PARTICIPANTS_2026[participantLightbox]}
+              className="w-full h-auto object-contain rounded-xl max-h-[80vh]"
+              onError={e => e.target.style.display='none'} />
+            <p className="text-white/60 text-sm text-center mt-3 font-semibold">
+              {PARTICIPANTS_2026[participantLightbox]}
+            </p>
+            <div className="flex justify-center gap-3 mt-4">
+              <button onClick={() => setParticipantLightbox(l => Math.max(0, l - 1))}
+                disabled={participantLightbox === 0}
+                className="text-white/50 hover:text-white disabled:opacity-20 text-sm font-bold px-4 py-2 bg-white/10 rounded-lg">← Prev</button>
+              <button onClick={() => setParticipantLightbox(l => Math.min(PARTICIPANTS_2026.length - 1, l + 1))}
+                disabled={participantLightbox === PARTICIPANTS_2026.length - 1}
+                className="text-white/50 hover:text-white disabled:opacity-20 text-sm font-bold px-4 py-2 bg-white/10 rounded-lg">Next →</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
 /* ─── EVENTS ─── */
 function Events() {
   const [tab, setTab] = useState('overview')
@@ -582,55 +640,31 @@ function Events() {
           </div>
         )}
 
-         {tab === 'speakers' && (
-  <div className="bg-white rounded-2xl p-7 border border-black/[0.05] shadow-sm">
-    <h3 className="font-serif text-xl text-navy font-normal mb-2">Distinguished Speakers</h3>
-    <div className="w-10 h-0.5 bg-teal mb-5"/>
-    <p className="text-gray-500 text-sm leading-relaxed mb-8">
-      ACMHR-K carefully invited speakers with extensive experience in relevant fields to ensure participants are well trained and gain valuable networking opportunities with internationally renowned experts.
-    </p>
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-      {SPEAKERS.map(({ name, photo, session }) => (
-        <div key={name} className="group rounded-xl overflow-hidden border border-black/[0.06] shadow-sm hover:shadow-md transition-all duration-300">
-          <div className="aspect-[3/4] overflow-hidden bg-[#f4f9f9]">
-            <img src={photo} alt={name} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-              onError={e => { e.target.parentNode.innerHTML='<div class="w-full h-full flex items-center justify-center text-4xl text-gray-300">👤</div>' }} />
-          </div>
-          <div className="p-4 bg-white">
-            <h4 className="font-serif text-navy text-sm font-semibold mb-1">{name}</h4>
-            <div className="text-teal text-[0.65rem] font-bold uppercase tracking-wider leading-snug">{session}</div>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-)}
-        {tab === 'participants' && (
+        {tab === 'speakers' && (
           <div className="bg-white rounded-2xl p-7 border border-black/[0.05] shadow-sm">
-            <h3 className="font-serif text-xl text-navy font-normal mb-2">2026 Cohort of ACMHR-K Ambassadors</h3>
-            <div className="w-10 h-0.5 bg-teal mb-4"/>
+            <h3 className="font-serif text-xl text-navy font-normal mb-2">Distinguished Speakers</h3>
+            <div className="w-10 h-0.5 bg-teal mb-5"/>
             <p className="text-gray-500 text-sm leading-relaxed mb-8">
-              After careful consideration, we are proud to present the 2026 Cohort of ACMHR-K Ambassadors. These individuals were competitively selected to undergo a three-week training program designed to build capacity in cardiometabolic disease prevention and management in Kenya.
+              ACMHR-K carefully invited speakers with extensive experience in relevant fields to ensure participants are well trained and gain valuable networking opportunities with internationally renowned experts.
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {PARTICIPANTS_2026.map(name => (
-                <div key={name} className="text-center group">
-                  <div className="w-full aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-teal/20 to-teal/5 border-2 border-teal/10 group-hover:border-teal/40 transition-all duration-200 mb-2">
-                    <img src={`/photos/${name}.png`} alt={name} className="w-full h-full object-cover"
-                      onError={e => { e.target.style.display='none'; e.target.parentNode.innerHTML='<div class="w-full h-full flex items-center justify-center text-2xl">👤</div>' }} />
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              {SPEAKERS.map(({ name, photo, session }) => (
+                <div key={name} className="group rounded-xl overflow-hidden border border-black/[0.06] shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="aspect-[3/4] overflow-hidden bg-[#f4f9f9]">
+                    <img src={photo} alt={name} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                      onError={e => { e.target.parentNode.innerHTML='<div class="w-full h-full flex items-center justify-center text-4xl text-gray-300">👤</div>' }} />
                   </div>
-                  <p className="text-xs font-semibold text-navy leading-tight">{name}</p>
-                  <p className="text-[0.6rem] text-teal font-bold uppercase tracking-wide">Ambassador</p>
+                  <div className="p-4 bg-white">
+                    <h4 className="font-serif text-navy text-sm font-semibold mb-1">{name}</h4>
+                    <div className="text-teal text-[0.65rem] font-bold uppercase tracking-wider leading-snug">{session}</div>
+                  </div>
                 </div>
               ))}
             </div>
-            <div className="mt-8">
-              <h4 className="font-semibold text-navy text-sm mb-3">Group Photo</h4>
-              <img src="/photos/Overall.png" alt="2026 Cohort Group Photo" className="w-full rounded-xl object-cover border border-black/[0.05]"
-                onError={e => e.target.style.display='none'} />
-            </div>
           </div>
         )}
+
+        {tab === 'participants' && <ParticipantsTab />}
 
         {tab === 'schedule' && (
           <div className="bg-white rounded-2xl border border-black/[0.05] shadow-sm overflow-hidden">
