@@ -413,63 +413,19 @@ function Governance() {
             <span className="section-tag">Join ACMHR-K</span>
             <h3 className="font-serif text-2xl text-navy font-normal mb-6">How to Join</h3>
 
-            {/* Step 1 */}
-            <div className="bg-teal rounded-2xl p-6 text-white mb-4">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">1</div>
-                <h4 className="font-semibold">Send Payment via M-Pesa</h4>
-              </div>
-              <div className="bg-white/10 rounded-xl p-4 mb-3 space-y-2 text-sm">
-                <div className="flex justify-between"><span className="text-white/70">M-Pesa Number</span><span className="font-bold">0119 666 132</span></div>
-                <div className="flex justify-between"><span className="text-white/70">Account Name</span><span className="font-bold">SILAS ANYANJE</span></div>
-                <div className="border-t border-white/20 pt-2 mt-2">
-                  <div className="flex justify-between"><span className="text-white/70">Student Fee</span><span className="font-bold text-gold">KSh 1,000 / year</span></div>
-                  <div className="flex justify-between mt-1"><span className="text-white/70">Professional Fee</span><span className="font-bold text-gold">KSh 1,500 / year</span></div>
-                </div>
-              </div>
-              <p className="text-white/70 text-xs">Send the exact amount matching your membership category.</p>
-            </div>
-
-            {/* Steps 2 & 3 */}
-            <div className="space-y-3 mb-6">
-              {[
-                { step: 2, title: 'Save Your Receipt', desc: 'Save the M-Pesa confirmation SMS or take a screenshot — you will need the 10-character transaction code.' },
-                { step: 3, title: 'Complete the Membership Form', desc: 'Fill in your details including your full name, email, phone, membership category, professional title, M-Pesa transaction code, and upload proof of payment.' },
-              ].map(({ step, title, desc }) => (
-                <div key={step} className="bg-white rounded-xl p-5 border border-black/[0.05] shadow-sm flex gap-4 items-start">
-                  <div className="w-9 h-9 bg-teal/10 rounded-full flex items-center justify-center font-bold text-teal text-sm flex-shrink-0">{step}</div>
-                  <div><h4 className="text-sm font-bold text-navy mb-1">{title}</h4><p className="text-xs text-gray-400 leading-relaxed">{desc}</p></div>
-                </div>
-              ))}
-            </div>
-
-            {/* Google Form Embed */}
-            <div className="rounded-2xl overflow-hidden border border-black/[0.08] shadow-sm mb-3">
-              <div className="bg-teal px-5 py-3 flex items-center gap-2">
-                <span className="text-white text-sm">📋</span>
-                <span className="text-white text-xs font-bold uppercase tracking-wider">Membership Application Form</span>
-              </div>
-              {/* ─────────────────────────────────────────────────────────────
-                  HOW TO EMBED YOUR GOOGLE FORM:
-                  1. Go to docs.google.com/forms and create your form
-                  2. Click Send → Embed icon (<>)
-                  3. Copy the URL from the src="..." part
-                  4. Replace REPLACE_WITH_YOUR_FORM_ID below with that URL
-                  e.g. src="https://docs.google.com/forms/d/e/1FAIpQLSe.../viewform?embedded=true"
-              ───────────────────────────────────────────────────────────── */}
-              <iframe
-                src="https://docs.google.com/forms/d/e/REPLACE_WITH_YOUR_FORM_ID/viewform?embedded=true"
-                width="100%"
-                height="900"
-                frameBorder="0"
-                marginHeight="0"
-                marginWidth="0"
-                title="ACMHR-K Membership Form"
-                className="w-full bg-white"
-              >
-                Loading form…
-              </iframe>
-            </div>
+            <div className="bg-[#f4f9f9] border border-black/[0.06] rounded-2xl p-6 mb-6 flex items-start gap-4">
+  <div className="w-10 h-10 bg-teal/10 rounded-xl flex items-center justify-center text-lg flex-shrink-0">✉️</div>
+  <div>
+    <h4 className="text-sm font-bold text-navy mb-1">Interested in Joining?</h4>
+    <p className="text-xs text-gray-400 leading-relaxed mb-3">
+      For membership inquiries, fees, and registration details, please reach out to us directly and we will guide you through the process.
+    </p>
+    <a href="mailto:info@acmhr-k.org" className="inline-flex items-center gap-2 bg-teal text-white text-xs font-semibold px-4 py-2 rounded-full hover:bg-teal-dark transition-colors">
+      ✉ info@acmhr-k.org
+    </a>
+  </div>
+</div>
+          
             <p className="text-center text-gray-400 text-xs mt-3">Questions? Email <a href="mailto:info@acmhr-k.org" className="text-teal hover:underline">info@acmhr-k.org</a></p>
           </div>
         </div>
