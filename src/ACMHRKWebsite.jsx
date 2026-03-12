@@ -61,57 +61,25 @@ const STATS = [
 ]
 
 const BOARD = [
-  {
-    name: 'Dr. Simon Okomo Aloo',
-    role: 'National Chairperson',
-    detail: 'PhD Candidate, Monash University · Baker Heart & Diabetes Institute',
-    email: 'simon.aloo@acmhr-k.org',
-    scholar: 'https://scholar.google.com/citations?user=YOUR_ID',
-    photo: '/photos/Simon.png',
-    bio: `Dr. Simon Aloo is a biomedical and food science researcher at the Baker Heart and Diabetes Institute, affiliated with Monash University, Australia. His research integrates food science, biotechnology, and clinical metabolomics/lipidomics to understand how dietary and metabolic factors influence cardiometabolic health.\n\nHe earned his BSc in Food Science and Nutrition (First Class Honours) from Karatina University, Kenya, then was awarded the Global Korea Scholarship (GKS-G) for his MSc at Kangwon National University, South Korea. He completed his PhD in Food Science and Biotechnology in 2024, supported by the Brain Korea (BK) and BEST-KNU scholarships. He is currently pursuing a second PhD in Biomedicine (lipidomics) at Monash University under the Monash Graduate Scholarship (MGS).\n\nDr. Aloo has authored over 28 peer-reviewed articles and book chapters. He has received an Award of Excellence from the Ministry of Education of Korea and two Outstanding Academic Achievement Awards from Kangwon National University.`,
-  },
-  {
-    name: 'Ms. Monicah Ndunda',
-    role: 'National Secretary & Project Coordinator',
-    detail: 'Clinical Nutritionist · Kitui County Referral Hospital',
-    email: 'mutindi.monicah@yahoo.com',
-    scholar: null,
-    photo: '/photos/Monica.png',
-    bio: `Monicah Ndunda is a Clinical Nutritionist and Public Health Nutrition professional. She holds a BSc in Food Science and is pursuing an MSc in Public Health Nutrition and Policy at Karatina University, Kenya.\n\nShe serves at Kitui County Referral Hospital providing clinical and community-based nutrition interventions. She is also a Student Research Fellow at ICIPE, where her research explores mealworms and spirulina as sustainable food sources to combat malnutrition in vulnerable populations including Kakuma Refugee Camp.\n\nMonicah is certified in the Integrated Phase Classification (IPC) for Acute Malnutrition. Her interests span maternal and child nutrition, preventive health, and sustainable food systems.`,
-  },
-  {
-    name: 'Mr. Silas Ambundo',
-    role: 'National Treasurer',
-    detail: 'Senior Teacher · Gititu Secondary School',
-    email: 'silasanyanje93@gmail.com',
-    scholar: null,
-    photo: '/photos/Silas.png',
-    bio: `Silas Ambundo is a Senior Teacher at Gititu Secondary School with over six years of experience in teaching and student mentorship. He holds a BSc in Education (First Class Honours) from Karatina University, Kenya, specializing in Mathematics and Physics.\n\nHis teaching philosophy emphasizes interactive learning, critical thinking, and values-based education. He is actively involved in curriculum implementation, academic coordination, and co-curricular mentorship. He currently serves as the Christian Union Patron at Gititu Secondary School.\n\nSilas has a keen interest in educational leadership, curriculum innovation, and youth empowerment.`,
-  },
-  {
-    name: 'Mr. Stephen Nyaranga',
-    role: 'IT Manager',
-    detail: 'PhD Fellow, CLARITY-Africa · Imperial College London',
-    email: 'stephen.nyaranga@acmhr-k.org',
-    scholar: null,
-    photo: '/photos/Stephen.jpg',
-    bio: `Stephen Nyaranga is a young African scientist working at the intersection of climate science, artificial intelligence, and geospatial technology. He is a PhD Fellow in Climate Science under the CLARITY-Africa Program, an international initiative led by Imperial College London in collaboration with AIMS-RIC.\n\nHis research uses deep learning and Sentinel-1 SAR time-series analysis to understand urban flooding, climate extremes, and community vulnerability in African cities. Before his PhD, he completed an MSc in Mathematical Sciences (Data Science) at AIMS–Senegal and an MSc in Geophysics at ICTP–EAIFR. He graduated First Class Honours in Physics and Mathematics from Karatina University, Kenya.\n\nAs Head of IT at Vatel Rwanda, Stephen has led digital transformation initiatives including cloud integration, AI adoption, and faculty training. His research interests span GeoAI, hydrological modeling, Earth observation, and AI for sustainable development.`,
-  },
+  { name: 'Dr. Simon Okomo Aloo', role: 'Chairperson',  detail: 'PhD Candidate, Monash University',           photo: '/photos/Aloo.png' },
+  { name: 'Stephen Nyaranga',     role: 'IT Lead',       detail: 'Asst. Lecturer & Head of IT, Vatel Rwanda',  photo: '/photos/Stephen.jpg' },
+  { name: 'Silas Ambundo',        role: 'Treasurer',     detail: 'Teacher, Gititu Secondary School',           photo: '/photos/Silas.png' },
+  { name: 'Monica Nduta',         role: 'Secretary',     detail: 'Nutritionist, Kitui County',                 photo: '/photos/Monica.png' },
 ]
 
 const SPEAKERS = [
-  { name: 'Alex',             photo: '/photos/Alex.png',      session: 'Session Speaker' },
-  { name: 'Eric',             photo: '/photos/Eric.png',      session: 'Session Speaker' },
-  { name: 'Lilian',           photo: '/photos/Lilian.png',    session: 'Session Speaker' },
-  { name: 'Nick',             photo: '/photos/Nick.png',      session: 'Session Speaker' },
-  { name: 'Olakunle',         photo: '/photos/Olakunle.png',  session: 'Session Speaker' },
-  { name: 'Dr. Simon Okomo Aloo', photo: '/photos/Aloo.png',  session: 'Session Speaker' },
+  { name: 'Alex Nguma, HSC',      photo: '/photos/Alex.png',      session: 'Burden, Trends & Trajectories of Cardiometabolic Illnesses in Kenya' },
+  { name: 'Ms. Lilian Mumina',    photo: '/photos/Lilian.png',    session: 'Nutrition and Metabolic Wellness: From Food to Function' },
+  { name: 'Eric Daliri, PhD',     photo: '/photos/Eric.png',      session: 'The Gut–Heart Connection: Microbiota and Cardiometabolic Health' },
+  { name: 'Sanni Olakunle, PhD',  photo: '/photos/Olakunle.png',  session: 'Herbal Medicine and Metabolic Health' },
+  { name: 'Simon Aloo, PhD',      photo: '/photos/Aloo.png',      session: 'Lipids and Cardiovascular Risk' },
+  { name: 'Nicholas Odongo, PhD', photo: '/photos/Nick.png',      session: 'Translating Research into Policy and Practice' },
 ]
 
 const PARTICIPANTS_2026 = [
   'Brenda', 'Gitau', 'Gloria', 'Joyce', 'Kamathi', 'Kanari',
   'Kipchumba', 'Linda', 'Marion', 'Muthembwa', 'Oswago',
-  'Purity Munyau', 'Resian', 'Rhoda', 'Richard', 'Sharon', 'Tony', 'Wekesa',
+  'Purity Munyau', 'Resian', 'Rhoda', 'Sharon', 'Tony', 'Wekesa',
 ]
 
 const PROGRAMS = [
@@ -139,9 +107,10 @@ const MEMBERSHIP_TYPES = [
   { type: 'Honorary Members',   desc: 'Distinguished individuals recognized for outstanding contributions to health and research.' },
 ]
 
-// const PARTNERS = [
-//   'We are still yet to c', 'Local & International NGOs',
-// ]
+const PARTNERS = [
+  'Karatina University', 'County Departments of Health',
+  'Monash University Research Partners', 'Local & International NGOs',
+]
 
 const FAQS = [
   { q: "What is ACMHR-K's main goal?",              a: "To promote prevention, early detection, and management of cardio-metabolic diseases in Kenya through research, education, and advocacy." },
@@ -209,7 +178,7 @@ function Navbar({ active, setActive }) {
           <img src={logo} alt="ACMHR-K Logo" className="w-11 h-11 rounded-full object-contain" />
           <div className="text-left leading-tight">
             <div className="font-serif text-lg text-teal-dark leading-none">ACMHR-K</div>
-            <div className="text-[0.62rem] text-gray-400 tracking-wide">Alliance for CMH & Research · Kenya</div>
+            <div className="text-[0.62rem] text-gray-400 tracking-wide">Alliance for Cardio-Metabolic Health & Research · Kenya</div>
           </div>
         </button>
         <ul className="hidden lg:flex items-center gap-1">
@@ -220,7 +189,7 @@ function Navbar({ active, setActive }) {
           ))}
         </ul>
         <div className="hidden lg:flex">
-          <button onClick={() => scrollTo('governance')} className="bg-teal text-white px-5 py-2 rounded-lg text-[0.82rem] font-semibold hover:bg-teal-dark hover:-translate-y-0.5 transition-all">Join Us</button>
+          <button onClick={() => scrollTo('contact')} className="bg-teal text-white px-5 py-2 rounded-lg text-[0.82rem] font-semibold hover:bg-teal-dark hover:-translate-y-0.5 transition-all">Join Us</button>
         </div>
         <button className="lg:hidden flex flex-col gap-1.5 p-1" onClick={() => setOpen(!open)}>
           <span className={`block w-6 h-0.5 bg-navy transition-all ${open ? 'rotate-45 translate-y-2' : ''}`}/>
@@ -233,7 +202,7 @@ function Navbar({ active, setActive }) {
           {NAV_LINKS.map(({ label, id }) => (
             <button key={id} onClick={() => scrollTo(id)} className="text-left px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:text-teal hover:bg-teal/7">{label}</button>
           ))}
-          <button onClick={() => scrollTo('governance')} className="mt-2 bg-teal text-white px-4 py-2.5 rounded-lg text-sm font-semibold">Join Us</button>
+          <button onClick={() => scrollTo('contact')} className="mt-2 bg-teal text-white px-4 py-2.5 rounded-lg text-sm font-semibold">Join Us</button>
         </div>
       )}
     </nav>
@@ -246,7 +215,7 @@ function Hero({ setActive }) {
   const scrollTo = (id) => { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); setActive(id) }
   return (
     <section id="home" className="min-h-[88vh] flex items-center justify-center text-center px-6 py-20 relative overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, rgba(0,18,25,0.90) 0%, rgba(0,95,115,0.70) 55%, rgba(10,147,150,0.50) 100%), url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1800&q=80") center/cover no-repeat' }}>
+      style={{ background: 'linear-gradient(135deg, rgba(0,18,25,0.85) 0%, rgba(0,95,115,0.70) 55%, rgba(10,147,150,0.50) 100%), url("/photos/Home_pic.jpeg") center/cover no-repeat' }}>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_70%,rgba(10,147,150,0.12)_0%,transparent_60%)] pointer-events-none"/>
       <div className="relative max-w-3xl mx-auto">
         <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-teal-light text-[0.75rem] font-bold tracking-widest uppercase px-5 py-1.5 rounded-full mb-7">
@@ -352,8 +321,8 @@ function About() {
   )
 }
 
+/* ─── TEAM ─── */
 function Team() {
-  const [selected, setSelected] = useState(null)
   return (
     <section id="team" className="py-24 px-6 bg-navy">
       <div className="max-w-5xl mx-auto">
@@ -363,16 +332,15 @@ function Team() {
           <p className="text-white/50 text-sm max-w-lg mx-auto">A multidisciplinary board providing strategic leadership and oversight.</p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {BOARD.map((member) => (
-            <div key={member.name} className="text-center group cursor-pointer" onClick={() => setSelected(member)}>
+          {BOARD.map(({ name, role, detail, photo }) => (
+            <div key={name} className="text-center group">
               <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 border-3 border-teal-light/20 group-hover:border-teal-light/60 transition-all duration-300 bg-gradient-to-br from-teal-dark to-teal">
-                <img src={member.photo} alt={member.name} className="w-full h-full object-cover"
+                <img src={photo} alt={name} className="w-full h-full object-cover"
                   onError={e => { e.target.style.display='none'; e.target.parentNode.innerHTML='<div class="w-full h-full flex items-center justify-center text-4xl">👤</div>' }} />
               </div>
-              <h4 className="font-serif text-white text-sm font-normal mb-1 leading-tight">{member.name}</h4>
-              <div className="text-teal-light text-[0.68rem] font-bold uppercase tracking-wider mb-1">{member.role}</div>
-              <div className="text-white/40 text-[0.7rem] leading-tight">{member.detail}</div>
-              <div className="mt-2 text-teal-light text-[0.65rem] font-semibold opacity-0 group-hover:opacity-100 transition-opacity">View Profile →</div>
+              <h4 className="font-serif text-white text-sm font-normal mb-1 leading-tight">{name}</h4>
+              <div className="text-teal-light text-[0.68rem] font-bold uppercase tracking-wider mb-1">{role}</div>
+              <div className="text-white/40 text-[0.7rem] leading-tight">{detail}</div>
             </div>
           ))}
         </div>
@@ -381,42 +349,6 @@ function Team() {
           <p className="text-white/55 text-sm leading-relaxed">The Secretariat, led by a Chief Executive Officer, oversees daily operations, program implementation, and communication — acting as the link between the Board, members, and partners.</p>
         </div>
       </div>
-
-      {/* Bio Modal */}
-      {selected && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 overflow-y-auto" onClick={() => setSelected(null)}>
-          <div className="bg-white rounded-2xl max-w-2xl w-full my-8 overflow-hidden shadow-2xl" onClick={e => e.stopPropagation()}>
-            <div className="bg-navy px-8 py-6 flex items-center gap-5">
-              <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-teal-light/30 bg-gradient-to-br from-teal-dark to-teal flex-shrink-0">
-                <img src={selected.photo} alt={selected.name} className="w-full h-full object-cover"
-                  onError={e => { e.target.style.display='none'; e.target.parentNode.innerHTML='<div class="w-full h-full flex items-center justify-center text-3xl">👤</div>' }} />
-              </div>
-              <div>
-                <h3 className="font-serif text-white text-xl font-normal">{selected.name}</h3>
-                <div className="text-teal-light text-xs font-bold uppercase tracking-wider mt-1">{selected.role}</div>
-                <div className="text-white/50 text-xs mt-1">{selected.detail}</div>
-              </div>
-              <button onClick={() => setSelected(null)} className="ml-auto text-white/40 hover:text-white text-xl self-start">✕</button>
-            </div>
-            <div className="px-8 py-6">
-              <div className="flex flex-wrap gap-3 mb-5">
-                <a href={`mailto:${selected.email}`} className="flex items-center gap-2 bg-teal/10 text-teal text-xs font-semibold px-4 py-2 rounded-full hover:bg-teal hover:text-white transition-all">
-                  ✉ {selected.email}
-                </a>
-                {selected.scholar && (
-                  <a href={selected.scholar} target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-blue-50 text-blue-600 text-xs font-semibold px-4 py-2 rounded-full hover:bg-blue-600 hover:text-white transition-all">
-                    🎓 Google Scholar
-                  </a>
-                )}
-              </div>
-              <h4 className="text-xs font-bold text-navy uppercase tracking-widest mb-3">Profile Summary</h4>
-              {selected.bio.split('\n\n').map((para, i) => (
-                <p key={i} className="text-gray-500 text-sm leading-relaxed mb-3">{para}</p>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   )
 }
@@ -517,40 +449,26 @@ function Governance() {
                 <span className="text-white text-sm">📋</span>
                 <span className="text-white text-xs font-bold uppercase tracking-wider">Membership Application Form</span>
               </div>
-             {/* Google Form — hidden until button clicked */}
-{(() => {
-  const [showForm, setShowForm] = useState(false)
-  return (
-    <div>
-      <button
-        onClick={() => setShowForm(!showForm)}
-        className="w-full bg-navy text-white text-center py-3.5 rounded-xl font-semibold text-sm hover:bg-teal-dark transition-colors duration-200 flex items-center justify-center gap-2"
-      >
-        {showForm ? '▲ Hide Application Form' : '📋 Open Membership Application Form'}
-      </button>
-      {showForm && (
-        <div className="mt-4 rounded-2xl overflow-hidden border border-black/[0.08] shadow-sm">
-          <div className="bg-teal px-5 py-3 flex items-center gap-2">
-            <span className="text-white text-sm">📋</span>
-            <span className="text-white text-xs font-bold uppercase tracking-wider">Membership Application Form</span>
-          </div>
-          <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSe1Jt5Ae7hVmfyAGd2wc9nCvqtOO-VbnKPz8U9CzTRLOG9xGQ/viewform?embedded=true"
-            width="100%"
-            height="1200"
-            frameBorder="0"
-            marginHeight="0"
-            marginWidth="0"
-            title="ACMHR-K Membership Form"
-            className="w-full bg-white"
-          >
-            Loading form…
-          </iframe>
-        </div>
-      )}
-    </div>
-  )
-})()}
+              {/* ─────────────────────────────────────────────────────────────
+                  HOW TO EMBED YOUR GOOGLE FORM:
+                  1. Go to docs.google.com/forms and create your form
+                  2. Click Send → Embed icon (<>)
+                  3. Copy the URL from the src="..." part
+                  4. Replace REPLACE_WITH_YOUR_FORM_ID below with that URL
+                  e.g. src="https://docs.google.com/forms/d/e/1FAIpQLSe.../viewform?embedded=true"
+              ───────────────────────────────────────────────────────────── */}
+              <iframe
+                src="https://docs.google.com/forms/d/e/REPLACE_WITH_YOUR_FORM_ID/viewform?embedded=true"
+                width="100%"
+                height="900"
+                frameBorder="0"
+                marginHeight="0"
+                marginWidth="0"
+                title="ACMHR-K Membership Form"
+                className="w-full bg-white"
+              >
+                Loading form…
+              </iframe>
             </div>
             <p className="text-center text-gray-400 text-xs mt-3">Questions? Email <a href="mailto:info@acmhr-k.org" className="text-teal hover:underline">info@acmhr-k.org</a></p>
           </div>
@@ -583,7 +501,12 @@ function Partnership() {
             </div>
           ))}
         </div>
-  
+        <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <h4 className="font-serif text-white text-lg font-normal mb-6 text-center">Current Collaborators</h4>
+          <div className="flex flex-wrap justify-center gap-3">
+            {PARTNERS.map(p => <span key={p} className="bg-teal/20 text-teal-light border border-teal/20 text-xs font-semibold px-5 py-2 rounded-full">{p}</span>)}
+          </div>
+        </div>
       </div>
     </section>
   )
@@ -613,7 +536,7 @@ function Events() {
             { icon: '📅', label: 'Duration',    val: 'Feb 7 – 28, 2026' },
             { icon: '💻', label: 'Mode',        val: 'Online via Zoom' },
             { icon: '🎓', label: 'Sessions',    val: '6 Sessions' },
-            { icon: '🏛️', label: 'Graduation',  val: 'Nairobi, July 2026 tentatively, exact date will be communicated!!' },
+            { icon: '🏛️', label: 'Graduation',  val: 'Nairobi, March 2026' },
           ].map(({ icon, label, val }) => (
             <div key={label} className="bg-white rounded-xl p-5 border border-black/[0.05] shadow-sm text-center">
               <div className="text-2xl mb-2">{icon}</div>
@@ -686,15 +609,18 @@ function Events() {
               <p className="text-gray-500 text-sm leading-relaxed mb-8">
                 ACMHR-K carefully invited speakers with extensive experience in relevant fields to ensure participants are well trained and gain valuable networking opportunities with internationally renowned experts.
               </p>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {SPEAKERS.map(({ name, photo, session }) => (
-                  <div key={name} className="text-center group">
-                    <div className="w-28 h-28 rounded-full overflow-hidden mx-auto mb-3 border-3 border-teal/20 group-hover:border-teal/60 transition-all duration-300 bg-gradient-to-br from-teal-dark to-teal">
-                      <img src={photo} alt={name} className="w-full h-full object-cover"
-                        onError={e => { e.target.style.display='none'; e.target.parentNode.innerHTML='<div class="w-full h-full flex items-center justify-center text-3xl text-white/60">👤</div>' }} />
+                  <div key={name} className="bg-[#f4f9f9] rounded-2xl overflow-hidden border border-black/[0.05] shadow-sm group hover:shadow-md transition-all duration-200">
+                    <div className="w-full aspect-square overflow-hidden bg-gradient-to-br from-teal-dark to-teal">
+                      <img src={photo} alt={name} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                        onError={e => { e.target.style.display='none'; e.target.parentNode.innerHTML='<div class="w-full h-full flex items-center justify-center text-6xl text-white/30">👤</div>' }} />
                     </div>
-                    <h4 className="font-serif text-navy text-sm font-normal mb-1">{name}</h4>
-                    <div className="text-teal text-[0.68rem] font-bold uppercase tracking-wider">{session}</div>
+                    <div className="p-5">
+                      <h4 className="font-serif text-navy text-base font-semibold mb-1">{name}</h4>
+                      <div className="w-8 h-0.5 bg-teal mb-2"/>
+                      <p className="text-gray-500 text-xs leading-relaxed">{session}</p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -708,20 +634,19 @@ function Events() {
             <h3 className="font-serif text-xl text-navy font-normal mb-2">Selected Participants — 2026 Cohort</h3>
             <div className="w-10 h-0.5 bg-teal mb-4"/>
             <p className="text-gray-500 text-sm leading-relaxed mb-8">
-              We are proud to present the 2026 cohort of ACMHR-K Ambassadors. These individuals successfully completed the training program and will represent the future of cardiovascular and metabolic health research in Kenya on the global stage.
+              After careful consideration, we are proud to present the 2026 Cohort of ACMHR-K Ambassadors. These individuals were competitively selected to undergo a three-week training program designed to build capacity in cardiometabolic disease prevention and management in Kenya.
             </p>
-            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {PARTICIPANTS_2026.map(name => {
-                const ext = ['Richard'].includes(name) ? 'jpg' : 'png'
-                const filename = name === 'Purity Munyau' ? 'Purity Munyau' : name
+                const filename = name
                 return (
                   <div key={name} className="text-center group">
-                    <div className="w-full aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-teal/20 to-teal/5 border-2 border-teal/10 group-hover:border-teal/40 transition-all duration-200 mb-2">
-                      <img src={`/photos/${filename}.${ext}`} alt={name} className="w-full h-full object-cover"
-                        onError={e => { e.target.style.display='none'; e.target.parentNode.innerHTML='<div class="w-full h-full flex items-center justify-center text-2xl">👤</div>' }} />
+                    <div className="w-full aspect-square rounded-xl overflow-hidden bg-white border-2 border-teal/10 group-hover:border-teal/40 transition-all duration-200 mb-2 shadow-sm">
+                      <img src={`/photos/${filename}.png`} alt={name} className="w-full h-full object-contain"
+                        onError={e => { e.target.style.display='none'; e.target.parentNode.innerHTML='<div class="w-full h-full flex items-center justify-center text-4xl bg-gradient-to-br from-teal/10 to-teal/5">👤</div>' }} />
                     </div>
-                    <p className="text-xs font-semibold text-navy leading-tight">{name}</p>
-                    <p className="text-[0.6rem] text-teal font-bold uppercase tracking-wide">Ambassador</p>
+                    <p className="text-sm font-semibold text-navy leading-tight">{name}</p>
+                    <p className="text-[0.65rem] text-teal font-bold uppercase tracking-wide">Ambassador</p>
                   </div>
                 )
               })}
@@ -771,9 +696,14 @@ function Gallery() {
   const [lightbox, setLightbox] = useState(null)
 
   const media = [
-    { type: 'image', src: '/Gallery/Gallery1.jpeg', caption: 'ACMHR-K Event' },
-    { type: 'image', src: '/Gallery/Gallery2.jpeg', caption: 'ACMHR-K Event' },
-    { type: 'video', src: '/Gallery/Video of the lab.mp4', caption: 'Video of the Lab', thumb: null },
+    { type: 'image', src: '/Gallery/Gallery1.jpeg',           caption: 'ACMHR-K Event' },
+    { type: 'image', src: '/Gallery/Gallery2.jpeg',           caption: 'ACMHR-K Event' },
+    { type: 'image', src: '/Gallery/Gallery4.jpeg',           caption: 'ACMHR-K Event' },
+    { type: 'image', src: '/Gallery/gallery5.jpeg',           caption: 'ACMHR-K Event' },
+    { type: 'image', src: '/Gallery/Gallery6.jpeg',           caption: 'ACMHR-K Event' },
+    { type: 'image', src: '/Gallery/Gallery7.jpeg',           caption: 'ACMHR-K Event' },
+    { type: 'image', src: '/Gallery/Gallery8.jpeg',           caption: 'ACMHR-K Event' },
+    { type: 'video', src: '/Gallery/Video_of_the_lab.mp4.mp4', caption: 'Video of the Lab' },
   ]
 
   return (
@@ -785,7 +715,7 @@ function Gallery() {
           A glimpse into our work — events, training sessions, and community outreach. More photos and videos will be added as our programs grow.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {media.map((item, i) => (
             <div key={i}
               className="group relative rounded-2xl overflow-hidden cursor-pointer border border-black/[0.06] shadow-sm hover:shadow-lg transition-all duration-300"
@@ -825,12 +755,7 @@ function Gallery() {
             </div>
           ))}
 
-          {/* "More coming soon" placeholder */}
-          <div className="rounded-2xl border-2 border-dashed border-gray-200 aspect-[4/3] flex flex-col items-center justify-center text-center p-6 md:col-span-0">
-            <div className="text-4xl mb-3 opacity-30">📸</div>
-            <p className="text-gray-400 text-xs font-semibold">More photos coming soon</p>
-            <p className="text-gray-300 text-[0.65rem] mt-1">Gallery updates as our programs grow</p>
-          </div>
+
         </div>
       </div>
 
@@ -896,7 +821,7 @@ function Contact() {
   const submit = async (e) => {
     e.preventDefault(); setLoading(true)
     try {
-      const res = await fetch('https://formspree.io/f/xaqpqazd', {
+      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
         method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(form),
       })
@@ -1007,7 +932,7 @@ function Footer({ setActive }) {
               <img src={logo} alt="ACMHR-K" className="w-12 h-12 rounded-full object-contain" />
               <div>
                 <div className="font-serif text-white text-base">ACMHR-K</div>
-                <div className="text-[0.65rem] text-white/35">Alliance for CMH & Research · Kenya</div>
+                <div className="text-[0.65rem] text-white/35">Alliance for Cardio-Metabolic Health & Research · Kenya</div>
               </div>
             </div>
             <p className="text-[0.82rem] text-white/40 leading-relaxed mb-5 max-w-xs">A registered non-profit committed to improving cardio-metabolic health through research, education, and community action. Est. 2nd September 2025.</p>
